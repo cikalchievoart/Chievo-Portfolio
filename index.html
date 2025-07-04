@@ -1,0 +1,1660 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cikal Chievo Arment - Portfolio</title>
+    <link rel="icon" type="image/png" href="images/logo.png" />
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: "#11F3D3",
+              dark: "#0F172A",
+              secondary: "#1E293B",
+            },
+            fontFamily: {
+              sans: ["Poppins", "sans-serif"],
+            },
+            animation: {
+              float: "float 6s ease-in-out infinite",
+              "pulse-slow": "pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite",
+              "slide-up": "slideUp 0.3s ease-out",
+              "slide-down": "slideDown 0.3s ease-out",
+              "slide-in": "slideIn 0.3s ease-out",
+              "slide-out": "slideOut 0.3s ease-out",
+            },
+            keyframes: {
+              float: {
+                "0%, 100%": { transform: "translateY(0)" },
+                "50%": { transform: "translateY(-20px)" },
+              },
+              slideUp: {
+                "0%": { transform: "translateY(10px)", opacity: "0" },
+                "100%": { transform: "translateY(0)", opacity: "1" },
+              },
+              slideDown: {
+                "0%": { transform: "translateY(-10px)", opacity: "0" },
+                "100%": { transform: "translateY(0)", opacity: "1" },
+              },
+              slideIn: {
+                "0%": { transform: "translateX(100%)", opacity: "0" },
+                "100%": { transform: "translateX(0)", opacity: "1" },
+              },
+              slideOut: {
+                "0%": { transform: "translateX(0)", opacity: "1" },
+                "100%": { transform: "translateX(100%)", opacity: "0" },
+              },
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap");
+
+      body {
+        font-family: "Poppins", sans-serif;
+        background-color: #0f172a;
+        color: #e2e8f0;
+        scroll-behavior: smooth;
+      }
+
+      .project-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 10px 25px rgba(17, 243, 211, 0.2);
+      }
+
+      .skill-icon {
+        transition: all 0.3s ease;
+      }
+
+      .skill-icon:hover {
+        transform: scale(1.2);
+        color: #11f3d3;
+      }
+
+      .modal {
+        display: none;
+        position: fixed;
+        z-index: 100;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(15, 23, 42, 0.8);
+        align-items: center;
+        justify-content: center;
+      }
+
+      .modal-content {
+        background-color: #1e293b;
+        border-radius: 1rem;
+        padding: 1.5rem;
+        max-width: 90%;
+        width: 640px;
+        position: relative;
+        box-shadow: 0 10px 25px rgba(17, 243, 211, 0.2);
+      }
+
+      .modal-close {
+        position: absolute;
+        top: 0.5rem;
+        right: 0.5rem;
+        color: #e2e8f0;
+        font-size: 1.5rem;
+        cursor: pointer;
+        transition: color 0.3s ease;
+      }
+
+      .modal-close:hover {
+        color: #11f3d3;
+      }
+
+      .modal iframe {
+        width: 100%;
+        aspect-ratio: 16 / 9;
+      }
+
+      .project-slider,
+      .gallery-slider {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+      }
+
+      .project-gallery,
+      .gallery-images {
+        display: flex;
+        transition: transform 0.5s ease;
+        height: 100%;
+      }
+
+      .project-gallery img,
+      .gallery-images img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        flex-shrink: 0;
+        cursor: pointer;
+        aspect-ratio: 16 / 9; /* Enforce 16:9 aspect ratio for project images */
+      }
+
+      .project-slider {
+        aspect-ratio: 16 / 9; /* Enforce 16:9 aspect ratio for project slider */
+        height: auto; /* Allow height to adjust based on aspect ratio */
+      }
+
+      .slider-nav {
+        position: absolute;
+        top: 50%;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        transform: translateY(-50%);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+
+      .project-card:hover .slider-nav,
+      .gallery-card:hover .slider-nav {
+        opacity: 1;
+      }
+
+      .slider-nav button {
+        background-color: rgba(17, 243, 211, 0.5);
+        color: #0f172a;
+        border: none;
+        padding: 0.5rem;
+        cursor: pointer;
+        font-size: 1rem;
+        transition: background-color 0.3s ease;
+      }
+
+      .slider-nav button:hover {
+        background-color: #11f3d3;
+      }
+
+      .slider-nav button:disabled {
+        background-color: rgba(17, 243, 211, 0.2);
+        cursor: not-allowed;
+      }
+
+      .image-modal {
+        display: none;
+        position: fixed;
+        z-index: 150;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(15, 23, 42, 0.9);
+        align-items: center;
+        justify-content: center;
+      }
+
+      .image-modal-content {
+        max-width: 90%;
+        max-height: 90%;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .image-modal-content img {
+        width: 100%;
+        height: auto;
+        object-fit: contain;
+        border-radius: 0.5rem;
+        aspect-ratio: 16 / 9; /* Ensure 16:9 aspect ratio */
+      }
+
+      .image-modal-close {
+        position: absolute;
+        top: 0.5rem;
+        right: 0.5rem;
+        color: #e2e8f0;
+        font-size: 1.5rem;
+        cursor: pointer;
+        transition: color 0.3s ease;
+        z-index: 160;
+      }
+
+      .image-modal-close:hover {
+        color: #11f3d3;
+      }
+
+      .image-slider-nav {
+        position: absolute;
+        top: 50%;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        transform: translateY(-50%);
+      }
+
+      .image-slider-nav button {
+        background-color: rgba(17, 243, 211, 0.5);
+        color: #0f172a;
+        border: none;
+        padding: 0.5rem;
+        cursor: pointer;
+        font-size: 1rem;
+        transition: background-color 0.3s ease;
+      }
+
+      .image-slider-nav button:hover {
+        background-color: #11f3d3;
+      }
+
+      .image-slider-nav button:disabled {
+        background-color: rgba(17, 243, 211, 0.2);
+        cursor: not-allowed;
+      }
+
+      .hidden {
+        display: none;
+      }
+
+      .toggle-description {
+        background: none;
+        border: none;
+        padding: 0;
+        cursor: pointer;
+      }
+
+      .project-description {
+        margin-bottom: 1rem;
+      }
+
+      #home {
+        position: relative;
+        overflow: hidden;
+      }
+
+      #particle-canvas {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        opacity: 0.5;
+        pointer-events: none;
+      }
+
+      .gallery-card {
+        max-width: 896px;
+        width: 100%;
+        margin: 0 auto;
+      }
+
+      .gallery-slider {
+        height: 504px;
+        aspect-ratio: 16 / 9;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .gallery-images img {
+        object-fit: cover;
+        max-width: 100%;
+        max-height: 100%;
+        width: 100%;
+        height: 100%;
+        aspect-ratio: 16 / 9; /* Ensure 16:9 aspect ratio */
+      }
+
+      .nav-link {
+        position: relative;
+        transition: color 0.3s ease;
+      }
+
+      .nav-link.active {
+        color: #11f3d3;
+        font-weight: 600;
+      }
+
+      .nav-link.active::after {
+        content: "";
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background-color: #11f3d3;
+        animation: slideDown 0.3s ease-out;
+      }
+
+      .nav-link:not(.active)::after {
+        content: "";
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background-color: #11f3d3;
+        transition: width 0.3s ease;
+      }
+
+      .nav-link:hover:not(.active)::after {
+        width: 100%;
+      }
+
+      /* Mobile menu styles */
+      .mobile-menu {
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 75%;
+        max-width: 300px;
+        height: 100%;
+        background-color: #1e293b;
+        transform: translateX(100%);
+        transition: transform 0.3s ease-in-out;
+        z-index: 50;
+        padding: 2rem;
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+      }
+
+      .mobile-menu.active {
+        transform: translateX(0);
+        animation: slideIn 0.3s ease-out;
+      }
+
+      .mobile-menu.closing {
+        animation: slideOut 0.3s ease-out;
+      }
+
+      .mobile-menu a {
+        color: #e2e8f0;
+        font-size: 1.25rem;
+        font-weight: 500;
+        text-decoration: none;
+      }
+
+      .mobile-menu a:hover {
+        color: #11f3d3;
+      }
+
+      /* Responsive adjustments */
+      @media (max-width: 768px) {
+        header {
+          background-color: #0f172a !important; /* Solid background for mobile */
+          backdrop-filter: none !important;
+        }
+
+        .image-modal-close {
+          top: 0.5rem;
+          right: 0.5rem;
+          font-size: 1.5rem;
+        }
+
+        .gallery-slider {
+          height: auto !important; /* Allow height to adjust based on aspect ratio */
+          aspect-ratio: 16 / 9; /* Enforce 16:9 aspect ratio */
+        }
+
+        .gallery-images img {
+          width: 100%;
+          height: auto;
+          aspect-ratio: 16 / 9; /* Enforce 16:9 aspect ratio */
+          object-fit: cover;
+        }
+
+        .project-slider {
+          height: auto !important; /* Allow height to adjust based on aspect ratio */
+          aspect-ratio: 16 / 9; /* Enforce 16:9 aspect ratio */
+        }
+
+        .project-gallery img {
+          width: 100%;
+          height: auto;
+          aspect-ratio: 16 / 9; /* Enforce 16:9 aspect ratio */
+          object-fit: cover;
+        }
+      }
+    </style>
+  </head>
+  <body class="min-h-screen">
+    <header
+      class="fixed w-full bg-dark/80 backdrop-blur-sm z-50 border-b border-primary/10"
+    >
+      <nav
+        class="container mx-auto px-6 py-4 flex justify-between items-center"
+      >
+        <div class="flex items-center space-x-2">
+          <div class="w-8 h-8 bg-primary rounded-full animate-pulse-slow"></div>
+          <span
+            class="text-xl font-bold bg-gradient-to-r from-primary to-emerald-400 bg-clip-text text-transparent"
+            >Cikal Chievo Arment</span
+          >
+        </div>
+        <div class="hidden md:flex space-x-8">
+          <a
+            href="#home"
+            class="nav-link text-gray-300 hover:text-primary transition"
+            >Home</a
+          >
+          <a
+            href="#projects"
+            class="nav-link text-gray-300 hover:text-primary transition"
+            >Projects</a
+          >
+          <a
+            href="#gallery"
+            class="nav-link text-gray-300 hover:text-primary transition"
+            >Gallery</a
+          >
+          <a
+            href="#skills"
+            class="nav-link text-gray-300 hover:text-primary transition"
+            >Skills</a
+          >
+          <a
+            href="#contact"
+            class="nav-link text-gray-300 hover:text-primary transition"
+            >Contact</a
+          >
+        </div>
+        <button
+          id="mobile-toggle"
+          class="md:hidden text-gray-300 focus:outline-none"
+        >
+          <i class="fas fa-bars text-2xl"></i>
+        </button>
+      </nav>
+      <div id="mobile-menu" class="mobile-menu">
+        <button id="mobile-close" class="text-gray-300 self-end">
+          <i class="fas fa-times text-2xl"></i>
+        </button>
+        <a href="#home" class="nav-link">Home</a>
+        <a href="#projects" class="nav-link">Projects</a>
+        <a href="#gallery" class="nav-link">Gallery</a>
+        <a href="#skills" class="nav-link">Skills</a>
+        <a href="#contact" class="nav-link">Contact</a>
+      </div>
+    </header>
+
+    <section id="home" class="min-h-screen flex items-center pt-20">
+      <canvas id="particle-canvas"></canvas>
+      <div
+        class="container mx-auto px-6 py-16 flex flex-col md:flex-row items-center"
+      >
+        <div class="md:w-1/2 mb-12 md:mb-0">
+          <h1 class="text-4xl md:text-6xl font-bold leading-tight mb-6">
+            Hi, I'm <span class="text-primary">Cikal Chievo Arment</span><br />
+            <span class="text-lg md:text-2xl text-gray-300"
+              >Unity Game Programmer</span
+            >
+          </h1>
+          <p class="text-lg text-gray-400 mb-8 max-w-lg">
+            I'm a soon-to-be graduate in Multimedia Engineering Technology with
+            a focus on game development using Unity and C#. I’ve built immersive
+            VR experiences and hardware-integrated simulations, combining
+            creative design with technical execution. I'm excited to bring
+            innovative and interactive solutions to real-world applications.
+          </p>
+          <div class="flex space-x-4">
+            <a
+              href="#projects"
+              class="px-8 py-3 bg-primary text-dark font-semibold rounded-full hover:bg-primary/80 transition view-projects"
+            >
+              View Projects
+            </a>
+            <a
+              href="#contact"
+              class="px-8 py-3 border-2 border-primary text-primary font-semibold rounded-full hover:bg-primary/10 transition contact-me"
+            >
+              Contact Me
+            </a>
+          </div>
+        </div>
+
+        <div class="md:w-1/2 flex justify-center animate-float">
+          <div
+            class="relative w-64 h-64 md:w-80 md:h-80 bg-secondary rounded-2xl p-4 shadow-lg"
+          >
+            <div
+              class="absolute inset-0 border-2 border-primary/30 rounded-2xl -m-2"
+            ></div>
+            <img
+              src="images/profil.jpg"
+              alt="Game developer working on a high-tech workstation with multiple monitors displaying game engines and code"
+              class="w-full h-full object-cover rounded-xl opacity-90"
+            />
+            <div
+              class="absolute w-16 h-16 bg-primary rounded-full -bottom-5 -right-5 flex items-center justify-center"
+            >
+              <i class="fas fa-gamepad text-2xl text-dark"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects" class="py-20 bg-secondary">
+      <div class="container mx-auto px-6">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl font-bold mb-4">
+            My <span class="text-primary">Game & Simulation</span> Projects
+          </h2>
+          <div class="w-20 h-1 bg-primary mx-auto"></div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div
+            class="project-card bg-dark rounded-xl overflow-hidden shadow-lg transition duration-500"
+            data-images='[
+              "images/mahakarya1.png",
+              "images/mahakarya2.png",
+              "images/mahakarya3.png"
+            ]'
+          >
+            <div class="project-slider">
+              <div class="project-gallery" id="gallery-mahakarya">
+                <img
+                  src="images/mahakarya1.png"
+                  alt="VR Mahakarya Screenshot 1"
+                />
+                <img
+                  src="images/mahakarya2.png"
+                  alt="VR Mahakarya Screenshot 2"
+                />
+                <img
+                  src="images/mahakarya3.png"
+                  alt="VR Mahakarya Screenshot 3"
+                />
+              </div>
+              <div class="slider-nav">
+                <button class="prev-btn" data-gallery="gallery-mahakarya">
+                  <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="next-btn" data-gallery="gallery-mahakarya">
+                  <i class="fas fa-chevron-right"></i>
+                </button>
+              </div>
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-bold mb-2">Game VR Mahakarya</h3>
+              <div class="project-description">
+                <p class="text-gray-400 mb-4 short-description"></p>
+                <p class="text-gray-400 mb-4 full-description hidden">
+                  Developed an immersive vocational exhibition VR game using
+                  Unity and Oculus. I was responsible for implementing enemy AI
+                  (for interactive storytelling), object interaction systems
+                  (grabbing, triggering, inspecting), and building modular
+                  environments. The game showcases iconic Indonesian landmarks
+                  such as Borobudur, Ulun Danu, Mount Merapi, Prambanan, Monas,
+                  Kota Tua, Jam Gadang, Toraja, and Honai, each embedded with
+                  real vocational student works from SMK and polytechnic
+                  institutions. This game was showcased at a national game event
+                  and received widespread appreciation for its cultural depth
+                  and interactive educational concept.
+                </p>
+                <button
+                  class="toggle-description text-primary text-sm font-semibold hover:underline focus:outline-none"
+                  data-state="short"
+                >
+                  See All →
+                </button>
+              </div>
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span
+                  class="px-3 py-1 bg-secondary rounded-full text-xs text-primary"
+                  >Unity</span
+                >
+                <span
+                  class="px-3 py-1 bg-secondary rounded-full text-xs text-primary"
+                  >Virtual Reality</span
+                >
+              </div>
+              <button
+                onclick="openModal('modal-mahakarya')"
+                class="text-primary text-sm font-semibold hover:underline focus:outline-none"
+              >
+                View Documentation →
+              </button>
+            </div>
+          </div>
+          <div id="modal-mahakarya" class="modal">
+            <div class="modal-content">
+              <span class="modal-close" onclick="closeModal('modal-mahakarya')"
+                ><i class="fas fa-times"></i
+              ></span>
+              <iframe
+                width="560"
+                height="315"
+                src="https://www.youtube.com/embed/jSHufoJGI6M?si=mGTpjsrRfMUCtcXQ"
+                title="YouTube video player"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin"
+                allowfullscreen
+              ></iframe>
+            </div>
+          </div>
+
+          <div
+            class="project-card bg-dark rounded-xl overflow-hidden shadow-lg transition duration-500"
+            data-images='[
+              "images/riau1.png",
+              "images/riau2.png",
+              "images/riau3.png"
+            ]'
+          >
+            <div class="project-slider">
+              <div class="project-gallery" id="gallery-battle-of-riau">
+                <img src="images/riau1.png" alt="Battle of Riau Screenshot 1" />
+                <img src="images/riau2.png" alt="Battle of Riau Screenshot 2" />
+                <img src="images/riau3.png" alt="Battle of Riau Screenshot 3" />
+              </div>
+              <div class="slider-nav">
+                <button class="prev-btn" data-gallery="gallery-battle-of-riau">
+                  <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="next-btn" data-gallery="gallery-battle-of-riau">
+                  <i class="fas fa-chevron-right"></i>
+                </button>
+              </div>
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-bold mb-2">Game VR Battle of Riau</h3>
+              <div class="project-description">
+                <p class="text-gray-400 mb-4 short-description"></p>
+                <p class="text-gray-400 mb-4 full-description hidden">
+                  Contributed as an environment and gameplay systems developer
+                  for a historical VR FPS game built using Unity and Oculus. The
+                  game reenacts the 1784 war between the Riau-Lingga Kingdom and
+                  Dutch forces. I designed immersive 3D environments
+                  representing Malay coastal territories, programmed NPCs
+                  onboard enemy ships, and implemented a dynamic difficulty
+                  adjustment (DDA) system based on real-time player performance
+                  (score-driven scaling). This game was showcased at a national
+                  game exhibition and received appreciation for its historical
+                  narrative and gameplay innovation.
+                </p>
+                <button
+                  class="toggle-description text-primary text-sm font-semibold hover:underline focus:outline-none"
+                  data-state="short"
+                >
+                  See All →
+                </button>
+              </div>
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span
+                  class="px-3 py-1 bg-secondary rounded-full text-xs text-primary"
+                  >Unity</span
+                >
+                <span
+                  class="px-3 py-1 bg-secondary rounded-full text-xs text-primary"
+                  >Virtual Reality</span
+                >
+              </div>
+              <button
+                onclick="openModal('modal-battle-of-riau')"
+                class="text-primary text-sm font-semibold hover:underline focus:outline-none"
+              >
+                View Documentation →
+              </button>
+            </div>
+          </div>
+          <div id="modal-battle-of-riau" class="modal">
+            <div class="modal-content">
+              <span
+                class="modal-close"
+                onclick="closeModal('modal-battle-of-riau')"
+                ><i class="fas fa-times"></i
+              ></span>
+              <iframe
+                width="560"
+                height="315"
+                src="https://www.youtube.com/embed/ei0mxm1s3yg?si=6IBgRWKWWSsouQ7x"
+                title="YouTube video player"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin"
+                allowfullscreen
+              ></iframe>
+            </div>
+          </div>
+
+          <div
+            class="project-card bg-dark rounded-xl overflow-hidden shadow-lg transition duration-500"
+            data-images='[
+              "images/little1.jpg",
+              "images/little2.jpg",
+              "images/little3.jpg"
+            ]'
+          >
+            <div class="project-slider">
+              <div class="project-gallery" id="gallery-little-witch">
+                <img src="images/little1.jpg" alt="Little Witch Screenshot 1" />
+                <img src="images/little2.jpg" alt="Little Witch Screenshot 2" />
+                <img src="images/little3.jpg" alt="Little Witch Screenshot 3" />
+              </div>
+              <div class="slider-nav">
+                <button class="prev-btn" data-gallery="gallery-little-witch">
+                  <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="next-btn" data-gallery="gallery-little-witch">
+                  <i class="fas fa-chevron-right"></i>
+                </button>
+              </div>
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-bold mb-2">
+                Game Little Witch: The Wanderer
+              </h3>
+              <div class="project-description">
+                <p class="text-gray-400 mb-4 short-description"></p>
+                <p class="text-gray-400 mb-4 full-description hidden">
+                  A side-scrolling adventure game inspired by Space Impact,
+                  featuring 3D assets and a magical witch theme. The game
+                  includes 15 levels with progressive difficulty and a character
+                  selection system. I contributed as a game programmer,
+                  developing key mechanics such as level-locking logic, enemy
+                  movement and shooting behavior, and integrating a custom
+                  Arduino-based joystick controller. The project showcases both
+                  gameplay balance and hardware interaction.
+                </p>
+                <button
+                  class="toggle-description text-primary text-sm font-semibold hover:underline focus:outline-none"
+                  data-state="short"
+                >
+                  See All →
+                </button>
+              </div>
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span
+                  class="px-3 py-1 bg-secondary rounded-full text-xs text-primary"
+                  >Unity</span
+                >
+                <span
+                  class="px-3 py-1 bg-secondary rounded-full text-xs text-primary"
+                  >3D</span
+                >
+                <span
+                  class="px-3 py-1 bg-secondary rounded-full text-xs text-primary"
+                  >Arduino Controller</span
+                >
+              </div>
+              <button
+                onclick="openModal('modal-little-witch')"
+                class="text-primary text-sm font-semibold hover:underline focus:outline-none"
+              >
+                View Documentation →
+              </button>
+            </div>
+          </div>
+          <div id="modal-little-witch" class="modal">
+            <div class="modal-content">
+              <span
+                class="modal-close"
+                onclick="closeModal('modal-little-witch')"
+                ><i class="fas fa-times"></i
+              ></span>
+              <iframe
+                width="560"
+                height="315"
+                src="https://www.youtube.com/embed/Bu-Tcuuw-yU?si=gvdlVxFzqDCSv3oL"
+                title="YouTube video player"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin"
+                allowfullscreen
+              ></iframe>
+            </div>
+          </div>
+
+          <div
+            class="project-card bg-dark rounded-xl overflow-hidden shadow-lg transition duration-500"
+            data-images='[
+              "images/sumitomo1.png",
+              "images/sumitomo2.png",
+              "images/sumitomo3.jpg"
+            ]'
+          >
+            <div class="project-slider">
+              <div class="project-gallery" id="gallery-bike-simulator">
+                <img
+                  src="images/sumitomo1.png"
+                  alt="Bike Simulator Screenshot 1"
+                />
+                <img
+                  src="images/sumitomo2.png"
+                  alt="Bike Simulator Screenshot 2"
+                />
+                <img
+                  src="images/sumitomo3.jpg"
+                  alt="Bike Simulator Screenshot 3"
+                />
+              </div>
+              <div class="slider-nav">
+                <button class="prev-btn" data-gallery="gallery-bike-simulator">
+                  <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="next-btn" data-gallery="gallery-bike-simulator">
+                  <i class="fas fa-chevron-right"></i>
+                </button>
+              </div>
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-bold mb-2">Bike Simulator Sumitomo</h3>
+              <div class="project-description">
+                <p class="text-gray-400 mb-4 short-description"></p>
+                <p class="text-gray-400 mb-4 full-description hidden">
+                  A motorcycle driving simulator developed using Unity, designed
+                  to provide a realistic riding experience from public roads to
+                  the final destination at PT. Sumitomo. The simulation features
+                  traffic systems, dynamic obstacles, and immersive road
+                  environments that reflect real-life driving challenges. I
+                  served as the game programmer, responsible for implementing
+                  traffic NPC movement and logic, motorcycle engine sound
+                  system, player scoring mechanics, and full hardware
+                  integration using Arduino sensors attached to a real
+                  motorcycle frame. The simulator was used for training and
+                  received positive feedback for its realism and functionality.
+                </p>
+                <button
+                  class="toggle-description text-primary text-sm font-semibold hover:underline focus:outline-none"
+                  data-state="short"
+                >
+                  See All →
+                </button>
+              </div>
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span
+                  class="px-3 py-1 bg-secondary rounded-full text-xs text-primary"
+                  >Unity</span
+                >
+                <span
+                  class="px-3 py-1 bg-secondary rounded-full text-xs text-primary"
+                  >Simulation</span
+                >
+                <span
+                  class="px-3 py-1 bg-secondary rounded-full text-xs text-primary"
+                  >Arduino Controller</span
+                >
+              </div>
+              <button
+                onclick="openModal('modal-bike-simulator')"
+                class="text-primary text-sm font-semibold hover:underline focus:outline-none"
+              >
+                View Documentation →
+              </button>
+            </div>
+          </div>
+          <div id="modal-bike-simulator" class="modal">
+            <div class="modal-content">
+              <span
+                class="modal-close"
+                onclick="closeModal('modal-bike-simulator')"
+                ><i class="fas fa-times"></i
+              ></span>
+              <iframe
+                src="https://drive.google.com/file/d/1wIdemcbPuNke-AauVveo_epg4kZE0ccP/preview"
+                title="Bike Simulator Sumitomo Video"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen
+              ></iframe>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="gallery" class="py-20">
+      <div class="container mx-auto px-6">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl font-bold mb-4">
+            Game Exhibition <span class="text-primary">Gallery</span>
+          </h2>
+          <div class="w-20 h-1 bg-primary mx-auto"></div>
+        </div>
+        <div class="grid grid-cols-1 gap-8 justify-items-center">
+          <div
+            class="gallery-card bg-dark rounded-xl overflow-hidden shadow-lg transition duration-500"
+            data-images='[
+              "images/background1.jpg",
+              "images/background2.jpg",
+              "images/background3.jpg"
+            ]'
+          >
+            <div class="gallery-slider">
+              <div class="gallery-images" id="gallery-exhibition">
+                <img
+                  src="images/background1.jpg"
+                  alt="Game Exhibition Photo 1"
+                />
+                <img
+                  src="images/background2.jpg"
+                  alt="Game Exhibition Photo 2"
+                />
+                <img
+                  src="images/background3.jpg"
+                  alt="Game Exhibition Photo 3"
+                />
+              </div>
+              <div class="slider-nav">
+                <button class="prev-btn" data-gallery="gallery-exhibition">
+                  <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="next-btn" data-gallery="gallery-exhibition">
+                  <i class="fas fa-chevron-right"></i>
+                </button>
+              </div>
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-bold mb-2">Game Exhibition Moments</h3>
+              <p class="text-gray-400 mb-4">
+                Captured moments from the INTI Gamecomm & Animation EXPO 2024 at
+                Jakarta International EXPO, North Jakarta, showcasing my VR and
+                simulation projects with DigiArs Game Development Team
+                (2024–2025), featuring interactive setups and visitor
+                engagement.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div id="image-modal" class="image-modal">
+      <div class="image-modal-content">
+        <span class="image-modal-close"><i class="fas fa-times"></i></span>
+        <img id="modal-image" src="" alt="Project Image" />
+        <div class="image-slider-nav">
+          <button id="image-prev-btn" class="prev-btn">
+            <i class="fas fa-chevron-left"></i>
+          </button>
+          <button id="image-next-btn" class="next-btn">
+            <i class="fas fa-chevron-right"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <section id="skills" class="py-20">
+      <div class="container mx-auto px-6">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl font-bold mb-4">
+            Technical <span class="text-primary">Skills</span>
+          </h2>
+          <div class="w-20 h-1 bg-primary mx-auto"></div>
+        </div>
+
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8">
+          <div class="text-center p-6 bg-secondary rounded-xl">
+            <div class="skill-icon text-5xl mb-4 text-primary">
+              <i class="fab fa-unity"></i>
+            </div>
+            <h3 class="font-semibold mb-2">Unity</h3>
+            <p class="text-sm text-gray-400">2+ years</p>
+          </div>
+          <div class="text-center p-6 bg-secondary rounded-xl">
+            <div class="skill-icon text-5xl mb-4 text-primary">
+              <i class="fas fa-laptop-code"></i>
+            </div>
+            <h3 class="font-semibold mb-2">C#</h3>
+            <p class="text-sm text-gray-400">2+ years</p>
+          </div>
+          <div class="text-center p-6 bg-secondary rounded-xl">
+            <div class="skill-icon text-5xl mb-4 text-primary">
+              <i class="fas fa-cogs"></i>
+            </div>
+            <h3 class="font-semibold mb-2">Embedded Systems Integration</h3>
+            <p class="text-sm text-gray-400">1+ years</p>
+          </div>
+          <div class="text-center p-6 bg-secondary rounded-xl">
+            <div class="skill-icon text-5xl mb-4 text-primary">
+              <i class="fas fa-users"></i>
+            </div>
+            <h3 class="font-semibold mb-2">Teamwork</h3>
+            <p class="text-sm text-gray-400">Collaboration</p>
+          </div>
+          <div class="text-center p-6 bg-secondary rounded-xl">
+            <div class="skill-icon text-5xl mb-4 text-primary">
+              <i class="fas fa-lightbulb"></i>
+            </div>
+            <h3 class="font-semibold mb-2">Problem Solving</h3>
+            <p class="text-sm text-gray-400">Creative</p>
+          </div>
+          <div class="text-center p-6 bg-secondary rounded-xl">
+            <div class="skill-icon text-5xl mb-4 text-primary">
+              <i class="fas fa-clock"></i>
+            </div>
+            <h3 class="font-semibold mb-2">Time Management</h3>
+            <p class="text-sm text-gray-400">Effective</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="py-20 bg-secondary">
+      <div class="container mx-auto px-6">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl font-bold mb-4">
+            Get In <span class="text-primary">Touch</span>
+          </h2>
+          <div class="w-20 h-1 bg-primary mx-auto"></div>
+        </div>
+
+        <div class="max-w-2xl mx-auto bg-dark rounded-xl p-8 shadow-lg">
+          <div id="contact-form">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+              <div>
+                <label for="name" class="block text-gray-400 mb-2">Name</label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  class="w-full px-4 py-3 bg-secondary border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                  placeholder="Your name"
+                  required
+                />
+              </div>
+              <div>
+                <label for="email" class="block text-gray-400 mb-2"
+                  >Email</label
+                >
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  class="w-full px-4 py-3 bg-secondary border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                  placeholder="your.email@example.com"
+                  required
+                />
+              </div>
+            </div>
+            <div class="mb-6">
+              <label for="subject" class="block mb-2 text-gray-400"
+                >Subject</label
+              >
+              <input
+                type="text"
+                id="subject"
+                name="subject"
+                class="w-full px-4 py-3 bg-secondary border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                placeholder="Subject"
+                required
+              />
+            </div>
+            <div class="mb-6">
+              <label for="message" class="block mb-2 text-gray-400"
+                >Message</label
+              >
+              <textarea
+                id="message"
+                name="message"
+                rows="4"
+                class="w-full px-4 py-3 bg-secondary border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                placeholder="Send me a message..."
+                required
+              ></textarea>
+            </div>
+            <div id="form-message" class="text-center mb-4"></div>
+            <button
+              type="submit"
+              class="w-full bg-primary text-dark font-semibold py-3 rounded-lg hover:bg-primary/90 transition focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-dark"
+            >
+              Send Message
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="py-8 bg-dark">
+      <div class="container mx-auto px-6">
+        <div class="flex flex-col md:flex-row justify-between items-center">
+          <div class="flex items-center space-x-2 mb-4 md:mb-0">
+            <div class="w-6 h-6 bg-primary rounded-full"></div>
+            <span
+              class="text-lg font-bold bg-gradient-to-r from-primary to-emerald-400 bg-clip-text text-transparent"
+              >Cikal Chievo Portfolio</span
+            >
+          </div>
+          <div class="flex space-x-6">
+            <a
+              href="https://www.linkedin.com/in/cikal-chievo-arment-86956b1a2/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-gray-300 hover:text-primary transition skill-icon"
+              aria-label="LinkedIn Profile"
+            >
+              <i class="fab fa-linkedin text-2xl"></i>
+            </a>
+            <a
+              href="https://github.com/cikalchievoart"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-gray-300 hover:text-primary transition skill-icon"
+              aria-label="GitHub Profile"
+            >
+              <i class="fab fa-github text-2xl"></i>
+            </a>
+            <a
+              href="https://www.instagram.com/cikalchievo.art/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-gray-300 hover:text-primary transition skill-icon"
+              aria-label="Instagram Profile"
+            >
+              <i class="fab fa-instagram text-2xl"></i>
+            </a>
+          </div>
+        </div>
+        <div class="mt-4 text-center text-gray-400 text-sm">
+          © 2025 Cikal Chievo Arment. All rights reserved.
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Make modal functions globally accessible
+      function openModal(modalId) {
+        const modal = document.getElementById(modalId);
+        if (!modal) return;
+        modal.style.display = "flex";
+        document.body.style.overflow = "hidden";
+      }
+
+      function closeModal(modalId) {
+        const modal = document.getElementById(modalId);
+        if (!modal) return;
+        modal.style.display = "none";
+        document.body.style.overflow = "auto";
+        const iframe = modal.querySelector("iframe");
+        if (iframe) {
+          const src = iframe.src;
+          iframe.src = ""; // Stop video playback
+          iframe.src = src; // Restore src for next open
+        }
+      }
+
+      (function () {
+        emailjs.init("wpZj55Q11WKHf1voD");
+
+        // Particle effect for home section
+        const canvas = document.getElementById("particle-canvas");
+        if (canvas) {
+          const ctx = canvas.getContext("2d");
+          let particles = [];
+
+          function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+          }
+
+          window.addEventListener("resize", resizeCanvas);
+          resizeCanvas();
+
+          class Particle {
+            constructor() {
+              this.x = Math.random() * canvas.width;
+              this.y = Math.random() * canvas.height;
+              this.size = Math.random() * 2 + 1;
+              this.speedX = Math.random() * 0.5 - 0.25;
+              this.speedY = Math.random() * 0.5 - 0.25;
+              this.opacity = Math.random() * 0.5 + 0.3;
+            }
+
+            update() {
+              this.x += this.speedX;
+              this.y += this.speedY;
+              if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
+              if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
+            }
+
+            draw() {
+              ctx.fillStyle = `rgba(17, 243, 211, ${this.opacity})`;
+              ctx.beginPath();
+              ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+              ctx.fill();
+            }
+          }
+
+          function initParticles() {
+            particles = [];
+            const particleCount = Math.floor(
+              (canvas.width * canvas.height) / 10000
+            );
+            for (let i = 0; i < particleCount; i++) {
+              particles.push(new Particle());
+            }
+          }
+
+          function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach((particle) => {
+              particle.update();
+              particle.draw();
+            });
+            requestAnimationFrame(animate);
+          }
+
+          initParticles();
+          animate();
+        }
+
+        // Navigation active state and scroll handling
+        const navLinks = document.querySelectorAll(".nav-link");
+        const sections = document.querySelectorAll("section");
+
+        function updateActiveNav() {
+          let currentSection = "";
+          const scrollPosition = window.scrollY + window.innerHeight / 2;
+
+          sections.forEach((section) => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.offsetHeight;
+            if (
+              scrollPosition >= sectionTop &&
+              scrollPosition < sectionTop + sectionHeight
+            ) {
+              currentSection = section.getAttribute("id");
+            }
+          });
+
+          navLinks.forEach((link) => {
+            link.classList.remove("active");
+            if (link.getAttribute("href") === `#${currentSection}`) {
+              link.classList.add("active");
+            }
+          });
+        }
+
+        // Smooth scroll with animation for nav links
+        navLinks.forEach((link) => {
+          link.addEventListener("click", (e) => {
+            e.preventDefault();
+            const targetId = link.getAttribute("href").substring(1);
+            const targetSection = document.getElementById(targetId);
+
+            if (targetSection) {
+              targetSection.scrollIntoView({ behavior: "smooth" });
+              setTimeout(updateActiveNav, 600);
+              // Close mobile menu if open
+              const mobileMenu = document.getElementById("mobile-menu");
+              if (mobileMenu.classList.contains("active")) {
+                toggleMobileMenu();
+              }
+            }
+          });
+        });
+
+        // Smooth scroll for View Projects and Contact Me buttons
+        const viewProjectsBtn = document.querySelector(".view-projects");
+        const contactMeBtn = document.querySelector(".contact-me");
+
+        if (viewProjectsBtn) {
+          viewProjectsBtn.addEventListener("click", (e) => {
+            e.preventDefault();
+            const targetSection = document.getElementById("projects");
+            if (targetSection) {
+              targetSection.scrollIntoView({ behavior: "smooth" });
+              setTimeout(updateActiveNav, 600);
+            }
+          });
+        }
+
+        if (contactMeBtn) {
+          contactMeBtn.addEventListener("click", (e) => {
+            e.preventDefault();
+            const targetSection = document.getElementById("contact");
+            if (targetSection) {
+              targetSection.scrollIntoView({ behavior: "smooth" });
+              setTimeout(updateActiveNav, 600);
+            }
+          });
+        }
+
+        // Update active nav on scroll
+        window.addEventListener("scroll", updateActiveNav);
+
+        // Initial update on page load
+        window.addEventListener("DOMContentLoaded", updateActiveNav);
+
+        // Mobile menu toggle
+        const mobileToggle = document.getElementById("mobile-toggle");
+        const mobileClose = document.getElementById("mobile-close");
+        const mobileMenu = document.getElementById("mobile-menu");
+
+        function toggleMobileMenu() {
+          if (mobileMenu.classList.contains("active")) {
+            mobileMenu.classList.add("closing");
+            setTimeout(() => {
+              mobileMenu.classList.remove("active", "closing");
+            }, 300);
+            mobileToggle.innerHTML = '<i class="fas fa-bars text-2xl"></i>';
+            document.body.style.overflow = "auto";
+          } else {
+            mobileMenu.classList.add("active");
+            mobileToggle.innerHTML = '<i class="fas fa-times text-2xl"></i>';
+            document.body.style.overflow = "hidden";
+          }
+        }
+
+        mobileToggle.addEventListener("click", toggleMobileMenu);
+        mobileClose.addEventListener("click", toggleMobileMenu);
+
+        // Store slider states
+        const sliderStates = new Map();
+
+        // Image Modal variables
+        let currentImageIndex = 0;
+        let currentImageUrls = [];
+        let currentGalleryId = null;
+
+        function openImageModal(galleryId, imageUrls, initialIndex = 0) {
+          const modal = document.getElementById("image-modal");
+          const modalImage = document.getElementById("modal-image");
+
+          if (!modal || !modalImage) return;
+
+          currentImageUrls = imageUrls;
+          currentImageIndex = initialIndex;
+          currentGalleryId = galleryId;
+
+          modalImage.src = imageUrls[currentImageIndex];
+          modalImage.alt = `Project Image ${currentImageIndex + 1}`;
+          modal.style.display = "flex";
+          document.body.style.overflow = "hidden";
+
+          updateImageModalButtons();
+        }
+
+        function closeImageModal() {
+          const modal = document.getElementById("image-modal");
+          if (!modal) return;
+
+          modal.style.display = "none";
+          document.body.style.overflow = "auto";
+
+          if (currentGalleryId) {
+            updateSliderButtons(currentGalleryId);
+          }
+
+          currentImageIndex = 0;
+          currentImageUrls = [];
+          currentGalleryId = null;
+        }
+
+        function updateImageModalButtons() {
+          const prevBtn = document.getElementById("image-prev-btn");
+          const nextBtn = document.getElementById("image-next-btn");
+
+          if (prevBtn) prevBtn.disabled = currentImageIndex === 0;
+          if (nextBtn)
+            nextBtn.disabled =
+              currentImageIndex === currentImageUrls.length - 1;
+        }
+
+        function prevImageModal() {
+          if (currentImageIndex > 0) {
+            currentImageIndex--;
+            const modalImage = document.getElementById("modal-image");
+            if (modalImage) {
+              modalImage.src = currentImageUrls[currentImageIndex];
+              modalImage.alt = `Project Image ${currentImageIndex + 1}`;
+              updateImageModalButtons();
+              updateGalleryPosition(currentGalleryId, currentImageIndex);
+            }
+          }
+        }
+
+        function nextImageModal() {
+          if (currentImageIndex < currentImageUrls.length - 1) {
+            currentImageIndex++;
+            const modalImage = document.getElementById("modal-image");
+            if (modalImage) {
+              modalImage.src = currentImageUrls[currentImageIndex];
+              modalImage.alt = `Project Image ${currentImageIndex + 1}`;
+              updateImageModalButtons();
+              updateGalleryPosition(currentGalleryId, currentImageIndex);
+            }
+          }
+        }
+
+        function updateGalleryPosition(galleryId, index) {
+          const gallery = document.getElementById(galleryId);
+          if (!gallery) return;
+
+          gallery.style.transform = `translateX(-${index * 100}%)`;
+          updateSliderButtons(galleryId);
+        }
+
+        function updateSliderButtons(galleryId) {
+          const gallery = document.getElementById(galleryId);
+          if (!gallery) return;
+
+          const images = gallery.querySelectorAll("img");
+          const prevBtn = gallery.parentElement.querySelector(".prev-btn");
+          const nextBtn = gallery.parentElement.querySelector(".next-btn");
+
+          const currentIndex = sliderStates.get(galleryId) || 0;
+
+          images.forEach((img, index) => {
+            img.classList.toggle("active", index === currentIndex);
+          });
+
+          if (prevBtn) prevBtn.disabled = currentIndex === 0;
+          if (nextBtn) nextBtn.disabled = currentIndex === images.length - 1;
+        }
+
+        function prevImage(galleryId) {
+          let currentIndex = sliderStates.get(galleryId) || 0;
+          if (currentIndex > 0) {
+            currentIndex--;
+            sliderStates.set(galleryId, currentIndex);
+            updateGalleryPosition(galleryId, currentIndex);
+          }
+        }
+
+        function nextImage(galleryId) {
+          const gallery = document.getElementById(galleryId);
+          if (!gallery) return;
+
+          const images = gallery.querySelectorAll("img");
+          let currentIndex = sliderStates.get(galleryId) || 0;
+          if (currentIndex < images.length - 1) {
+            currentIndex++;
+            sliderStates.set(galleryId, currentIndex);
+            updateGalleryPosition(galleryId, currentIndex);
+          }
+        }
+
+        // Function to truncate text to a specified number of words
+        function truncateText(text, wordLimit) {
+          const words = text.trim().split(/\s+/);
+          if (words.length <= wordLimit) return text;
+          return words.slice(0, wordLimit).join(" ") + "...";
+        }
+
+        document.addEventListener("DOMContentLoaded", function () {
+          // Initialize description toggle for project cards
+          document.querySelectorAll(".project-card").forEach((card) => {
+            const fullDescription = card.querySelector(".full-description");
+            const shortDescription = card.querySelector(".short-description");
+            const toggleButton = card.querySelector(".toggle-description");
+
+            if (fullDescription && shortDescription && toggleButton) {
+              shortDescription.textContent = truncateText(
+                fullDescription.textContent,
+                20
+              );
+
+              toggleButton.addEventListener("click", () => {
+                const isShort =
+                  toggleButton.getAttribute("data-state") === "short";
+                if (isShort) {
+                  shortDescription.classList.add("hidden");
+                  fullDescription.classList.remove("hidden");
+                  toggleButton.setAttribute("data-state", "full");
+                  toggleButton.textContent = "See Less ↑";
+                } else {
+                  shortDescription.classList.remove("hidden");
+                  fullDescription.classList.add("hidden");
+                  toggleButton.setAttribute("data-state", "short");
+                  toggleButton.textContent = "See All →";
+                }
+              });
+            }
+
+            // Slider and modal logic for project cards
+            const gallery = card.querySelector(".project-gallery");
+            if (!gallery) return;
+
+            const galleryId = gallery.id;
+            sliderStates.set(galleryId, 0);
+            gallery.style.transform = "translateX(0%)";
+            updateSliderButtons(galleryId);
+
+            const imageUrls = JSON.parse(card.dataset.images || "[]");
+
+            gallery.querySelectorAll("img").forEach((img, index) => {
+              img.addEventListener("click", () => {
+                sliderStates.set(galleryId, index);
+                updateSliderButtons(galleryId);
+                openImageModal(galleryId, imageUrls, index);
+              });
+            });
+
+            const prevBtn = card.querySelector(".prev-btn");
+            if (prevBtn) {
+              prevBtn.addEventListener("click", () => prevImage(galleryId));
+            }
+
+            const nextBtn = card.querySelector(".next-btn");
+            if (nextBtn) {
+              nextBtn.addEventListener("click", () => nextImage(galleryId));
+            }
+          });
+
+          // Slider and modal logic for gallery cards
+          document.querySelectorAll(".gallery-card").forEach((card) => {
+            const gallery = card.querySelector(".gallery-images");
+            if (!gallery) return;
+
+            const galleryId = gallery.id;
+            sliderStates.set(galleryId, 0);
+            gallery.style.transform = "translateX(0%)";
+            updateSliderButtons(galleryId);
+
+            const imageUrls = JSON.parse(card.dataset.images || "[]");
+
+            gallery.querySelectorAll("img").forEach((img, index) => {
+              img.addEventListener("click", () => {
+                sliderStates.set(galleryId, index);
+                updateSliderButtons(galleryId);
+                openImageModal(galleryId, imageUrls, index);
+              });
+            });
+
+            const prevBtn = card.querySelector(".prev-btn");
+            if (prevBtn) {
+              prevBtn.addEventListener("click", () => prevImage(galleryId));
+            }
+
+            const nextBtn = card.querySelector(".next-btn");
+            if (nextBtn) {
+              nextBtn.addEventListener("click", () => nextImage(galleryId));
+            }
+          });
+
+          document.querySelectorAll(".modal").forEach((modal) => {
+            modal.addEventListener("click", (e) => {
+              if (e.target === modal) {
+                closeModal(modal.id);
+              }
+            });
+          });
+
+          const imageModal = document.getElementById("image-modal");
+          if (imageModal) {
+            imageModal.addEventListener("click", (e) => {
+              if (e.target === imageModal) {
+                closeImageModal();
+              }
+            });
+
+            const modalImage = document.getElementById("modal-image");
+            if (modalImage) {
+              modalImage.addEventListener("click", () => {
+                nextImageModal();
+              });
+            }
+          }
+
+          const imageModalClose = document.querySelector(".image-modal-close");
+          if (imageModalClose) {
+            imageModalClose.addEventListener("click", closeImageModal);
+          }
+
+          const imagePrevBtn = document.getElementById("image-prev-btn");
+          if (imagePrevBtn) {
+            imagePrevBtn.addEventListener("click", prevImageModal);
+          }
+
+          const imageNextBtn = document.getElementById("image-next-btn");
+          if (imageNextBtn) {
+            imageNextBtn.addEventListener("click", () => nextImageModal());
+          }
+
+          const contactForm = document.getElementById("contact-form");
+          if (contactForm) {
+            contactForm.addEventListener("submit", function (event) {
+              event.preventDefault();
+              const formMessage = document.getElementById("form-message");
+              if (!formMessage) return;
+
+              formMessage.textContent = "Sending...";
+              formMessage.className = "text-center mb-4 text-primary";
+
+              emailjs
+                .sendForm("service_p9qy2gx", "template_zfc7mh2", this)
+                .then(
+                  () => {
+                    formMessage.textContent = "Message sent successfully!";
+                    formMessage.className = "text-center mb-4 text-green-400";
+                    this.reset();
+                  },
+                  (error) => {
+                    formMessage.textContent =
+                      "Failed to send message. Please try again.";
+                    formMessage.className = "text-center mb-4 text-red-400";
+                    console.error("EmailJS error:", error);
+                  }
+                );
+            });
+          }
+
+          const modalImage = document.getElementById("modal-image");
+          if (modalImage) {
+            modalImage.addEventListener("error", () => {
+              console.error("Failed to load image:", modalImage.src);
+              modalImage.src = "";
+              modalImage.alt = "Image failed to load";
+            });
+          }
+        });
+      })();
+    </script>
+  </body>
+</html>
