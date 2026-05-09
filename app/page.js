@@ -3,6 +3,7 @@ import Script from "next/script";
 export default function Home() {
   return (
     <>
+<<<<<<< HEAD
       <header
       className="fixed w-full bg-dark/80 backdrop-blur-sm z-50 border-b border-primary/10"
     >
@@ -779,6 +780,9 @@ export default function Home() {
         </div>
       </div>
     </footer>
+=======
+      <div dangerouslySetInnerHTML={{ __html: htmlContent }} />
+>>>>>>> parent of 4b94221 (Convert Header to proper Next.js component to fix Tailwind missing classes and update nav links)
       <Script src="/script.js" strategy="afterInteractive" />
     </>
   );

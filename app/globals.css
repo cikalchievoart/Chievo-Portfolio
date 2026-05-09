@@ -1,4 +1,8 @@
 @import "tailwindcss";
+<<<<<<< HEAD
+=======
+@source "./portfolio-body.html";
+>>>>>>> parent of 4b94221 (Convert Header to proper Next.js component to fix Tailwind missing classes and update nav links)
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap");
 
 @theme {
