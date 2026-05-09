@@ -1,4 +1,61 @@
-
+<header
+      class="fixed w-full bg-dark/80 backdrop-blur-sm z-50 border-b border-primary/10"
+    >
+      <nav
+        class="container mx-auto px-6 py-4 flex justify-between items-center"
+      >
+        <div class="flex items-center space-x-2">
+          <div class="w-8 h-8 bg-primary rounded-full animate-pulse-slow"></div>
+          <span
+            class="text-xl font-bold bg-gradient-to-r from-primary to-emerald-400 bg-clip-text text-transparent"
+            >Cikal Chievo Arment</span
+          >
+        </div>
+        <div class="hidden md:flex space-x-8">
+          <a
+            href="#home"
+            class="nav-link text-gray-300 hover:text-primary transition"
+            >Home</a
+          >
+          <a
+            href="#projects"
+            class="nav-link text-gray-300 hover:text-primary transition"
+            >Projects</a
+          >
+          <a
+            href="#gallery"
+            class="nav-link text-gray-300 hover:text-primary transition"
+            >Gallery</a
+          >
+          <a
+            href="#skills"
+            class="nav-link text-gray-300 hover:text-primary transition"
+            >Skills</a
+          >
+          <a
+            href="#contact"
+            class="nav-link text-gray-300 hover:text-primary transition"
+            >Contact</a
+          >
+        </div>
+        <button
+          id="mobile-toggle"
+          class="md:hidden text-gray-300 focus:outline-none"
+        >
+          <i class="fas fa-bars text-2xl"></i>
+        </button>
+      </nav>
+      <div id="mobile-menu" class="mobile-menu">
+        <button id="mobile-close" class="text-gray-300 self-end">
+          <i class="fas fa-times text-2xl"></i>
+        </button>
+        <a href="#home" class="nav-link">Home</a>
+        <a href="#projects" class="nav-link">Projects</a>
+        <a href="#gallery" class="nav-link">Gallery</a>
+        <a href="#skills" class="nav-link">Skills</a>
+        <a href="#contact" class="nav-link">Contact</a>
+      </div>
+    </header>
 
     <section id="home" class="min-h-screen flex items-center pt-20">
       <canvas id="particle-canvas"></canvas>
@@ -630,6 +687,7 @@
               class="w-full bg-primary text-dark font-semibold py-3 rounded-lg hover:bg-primary/90 transition focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-dark"
             >
               Send Message
+            </button>
             </div>
 
             <!-- Step 2: OTP Verification (Hidden by default) -->
