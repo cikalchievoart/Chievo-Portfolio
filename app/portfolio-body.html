@@ -1,436 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Cikal Chievo Arment - Portfolio</title>
-    <link rel="icon" type="image/png" href="images/logo.png" />
-
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    />
-    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            colors: {
-              primary: "#11F3D3",
-              dark: "#0F172A",
-              secondary: "#1E293B",
-            },
-            fontFamily: {
-              sans: ["Poppins", "sans-serif"],
-            },
-            animation: {
-              float: "float 6s ease-in-out infinite",
-              "pulse-slow": "pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite",
-              "slide-up": "slideUp 0.3s ease-out",
-              "slide-down": "slideDown 0.3s ease-out",
-              "slide-in": "slideIn 0.3s ease-out",
-              "slide-out": "slideOut 0.3s ease-out",
-            },
-            keyframes: {
-              float: {
-                "0%, 100%": { transform: "translateY(0)" },
-                "50%": { transform: "translateY(-20px)" },
-              },
-              slideUp: {
-                "0%": { transform: "translateY(10px)", opacity: "0" },
-                "100%": { transform: "translateY(0)", opacity: "1" },
-              },
-              slideDown: {
-                "0%": { transform: "translateY(-10px)", opacity: "0" },
-                "100%": { transform: "translateY(0)", opacity: "1" },
-              },
-              slideIn: {
-                "0%": { transform: "translateX(100%)", opacity: "0" },
-                "100%": { transform: "translateX(0)", opacity: "1" },
-              },
-              slideOut: {
-                "0%": { transform: "translateX(0)", opacity: "1" },
-                "100%": { transform: "translateX(100%)", opacity: "0" },
-              },
-            },
-          },
-        },
-      };
-    </script>
-    <style>
-      @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap");
-
-      body {
-        font-family: "Poppins", sans-serif;
-        background-color: #0f172a;
-        color: #e2e8f0;
-        scroll-behavior: smooth;
-      }
-
-      .project-card:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 10px 25px rgba(17, 243, 211, 0.2);
-      }
-
-      .skill-icon {
-        transition: all 0.3s ease;
-      }
-
-      .skill-icon:hover {
-        transform: scale(1.2);
-        color: #11f3d3;
-      }
-
-      .modal {
-        display: none;
-        position: fixed;
-        z-index: 100;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(15, 23, 42, 0.8);
-        align-items: center;
-        justify-content: center;
-      }
-
-      .modal-content {
-        background-color: #1e293b;
-        border-radius: 1rem;
-        padding: 1.5rem;
-        max-width: 90%;
-        width: 640px;
-        position: relative;
-        box-shadow: 0 10px 25px rgba(17, 243, 211, 0.2);
-      }
-
-      .modal-close {
-        position: absolute;
-        top: 0.5rem;
-        right: 0.5rem;
-        color: #e2e8f0;
-        font-size: 1.5rem;
-        cursor: pointer;
-        transition: color 0.3s ease;
-      }
-
-      .modal-close:hover {
-        color: #11f3d3;
-      }
-
-      .modal iframe {
-        width: 100%;
-        aspect-ratio: 16 / 9;
-      }
-
-      .project-slider,
-      .gallery-slider {
-        position: relative;
-        width: 100%;
-        height: 100%;
-        overflow: hidden;
-      }
-
-      .project-gallery,
-      .gallery-images {
-        display: flex;
-        transition: transform 0.5s ease;
-        height: 100%;
-      }
-
-      .project-gallery img,
-      .gallery-images img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        flex-shrink: 0;
-        cursor: pointer;
-        aspect-ratio: 16 / 9; /* Enforce 16:9 aspect ratio for project images */
-      }
-
-      .project-slider {
-        aspect-ratio: 16 / 9; /* Enforce 16:9 aspect ratio for project slider */
-        height: auto; /* Allow height to adjust based on aspect ratio */
-      }
-
-      .slider-nav {
-        position: absolute;
-        top: 50%;
-        width: 100%;
-        display: flex;
-        justify-content: space-between;
-        transform: translateY(-50%);
-        opacity: 0;
-        transition: opacity 0.3s ease;
-      }
-
-      .project-card:hover .slider-nav,
-      .gallery-card:hover .slider-nav {
-        opacity: 1;
-      }
-
-      .slider-nav button {
-        background-color: rgba(17, 243, 211, 0.5);
-        color: #0f172a;
-        border: none;
-        padding: 0.5rem;
-        cursor: pointer;
-        font-size: 1rem;
-        transition: background-color 0.3s ease;
-      }
-
-      .slider-nav button:hover {
-        background-color: #11f3d3;
-      }
-
-      .slider-nav button:disabled {
-        background-color: rgba(17, 243, 211, 0.2);
-        cursor: not-allowed;
-      }
-
-      .image-modal {
-        display: none;
-        position: fixed;
-        z-index: 150;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(15, 23, 42, 0.9);
-        align-items: center;
-        justify-content: center;
-      }
-
-      .image-modal-content {
-        max-width: 90%;
-        max-height: 90%;
-        position: relative;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-      }
-
-      .image-modal-content img {
-        width: 100%;
-        height: auto;
-        object-fit: contain;
-        border-radius: 0.5rem;
-        aspect-ratio: 16 / 9; /* Ensure 16:9 aspect ratio */
-      }
-
-      .image-modal-close {
-        position: absolute;
-        top: 0.5rem;
-        right: 0.5rem;
-        color: #e2e8f0;
-        font-size: 1.5rem;
-        cursor: pointer;
-        transition: color 0.3s ease;
-        z-index: 160;
-      }
-
-      .image-modal-close:hover {
-        color: #11f3d3;
-      }
-
-      .image-slider-nav {
-        position: absolute;
-        top: 50%;
-        width: 100%;
-        display: flex;
-        justify-content: space-between;
-        transform: translateY(-50%);
-      }
-
-      .image-slider-nav button {
-        background-color: rgba(17, 243, 211, 0.5);
-        color: #0f172a;
-        border: none;
-        padding: 0.5rem;
-        cursor: pointer;
-        font-size: 1rem;
-        transition: background-color 0.3s ease;
-      }
-
-      .image-slider-nav button:hover {
-        background-color: #11f3d3;
-      }
-
-      .image-slider-nav button:disabled {
-        background-color: rgba(17, 243, 211, 0.2);
-        cursor: not-allowed;
-      }
-
-      .hidden {
-        display: none;
-      }
-
-      .toggle-description {
-        background: none;
-        border: none;
-        padding: 0;
-        cursor: pointer;
-      }
-
-      .project-description {
-        margin-bottom: 1rem;
-      }
-
-      #home {
-        position: relative;
-        overflow: hidden;
-      }
-
-      #particle-canvas {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        z-index: -1;
-        opacity: 0.5;
-        pointer-events: none;
-      }
-
-      .gallery-card {
-        max-width: 896px;
-        width: 100%;
-        margin: 0 auto;
-      }
-
-      .gallery-slider {
-        height: 504px;
-        aspect-ratio: 16 / 9;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      }
-
-      .gallery-images img {
-        object-fit: cover;
-        max-width: 100%;
-        max-height: 100%;
-        width: 100%;
-        height: 100%;
-        aspect-ratio: 16 / 9; /* Ensure 16:9 aspect ratio */
-      }
-
-      .nav-link {
-        position: relative;
-        transition: color 0.3s ease;
-      }
-
-      .nav-link.active {
-        color: #11f3d3;
-        font-weight: 600;
-      }
-
-      .nav-link.active::after {
-        content: "";
-        position: absolute;
-        bottom: -2px;
-        left: 0;
-        width: 100%;
-        height: 2px;
-        background-color: #11f3d3;
-        animation: slideDown 0.3s ease-out;
-      }
-
-      .nav-link:not(.active)::after {
-        content: "";
-        position: absolute;
-        bottom: -2px;
-        left: 0;
-        width: 0;
-        height: 2px;
-        background-color: #11f3d3;
-        transition: width 0.3s ease;
-      }
-
-      .nav-link:hover:not(.active)::after {
-        width: 100%;
-      }
-
-      /* Mobile menu styles */
-      .mobile-menu {
-        position: fixed;
-        top: 0;
-        right: 0;
-        width: 75%;
-        max-width: 300px;
-        height: 100%;
-        background-color: #1e293b;
-        transform: translateX(100%);
-        transition: transform 0.3s ease-in-out;
-        z-index: 50;
-        padding: 2rem;
-        display: flex;
-        flex-direction: column;
-        gap: 1.5rem;
-      }
-
-      .mobile-menu.active {
-        transform: translateX(0);
-        animation: slideIn 0.3s ease-out;
-      }
-
-      .mobile-menu.closing {
-        animation: slideOut 0.3s ease-out;
-      }
-
-      .mobile-menu a {
-        color: #e2e8f0;
-        font-size: 1.25rem;
-        font-weight: 500;
-        text-decoration: none;
-      }
-
-      .mobile-menu a:hover {
-        color: #11f3d3;
-      }
-
-      /* Responsive adjustments */
-      @media (max-width: 768px) {
-        header {
-          background-color: #0f172a !important; /* Solid background for mobile */
-          backdrop-filter: none !important;
-        }
-
-        .image-modal-close {
-          top: 0.5rem;
-          right: 0.5rem;
-          font-size: 1.5rem;
-        }
-
-        .gallery-slider {
-          height: auto !important; /* Allow height to adjust based on aspect ratio */
-          aspect-ratio: 16 / 9; /* Enforce 16:9 aspect ratio */
-        }
-
-        .gallery-images img {
-          width: 100%;
-          height: auto;
-          aspect-ratio: 16 / 9; /* Enforce 16:9 aspect ratio */
-          object-fit: cover;
-        }
-
-        .project-slider {
-          height: auto !important; /* Allow height to adjust based on aspect ratio */
-          aspect-ratio: 16 / 9; /* Enforce 16:9 aspect ratio */
-        }
-
-        .project-gallery img {
-          width: 100%;
-          height: auto;
-          aspect-ratio: 16 / 9; /* Enforce 16:9 aspect ratio */
-          object-fit: cover;
-        }
-      }
-    </style>
-  </head>
-  <body class="min-h-screen">
-    <header
+<header
       class="fixed w-full bg-dark/80 backdrop-blur-sm z-50 border-b border-primary/10"
     >
       <nav
@@ -555,7 +123,7 @@
           <div class="w-20 h-1 bg-primary mx-auto"></div>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-start">
           <div
             class="project-card bg-dark rounded-xl overflow-hidden shadow-lg transition duration-500"
             data-images='[
@@ -566,15 +134,15 @@
           >
             <div class="project-slider">
               <div class="project-gallery" id="gallery-mahakarya">
-                <img
+                <img loading="lazy"
                   src="images/mahakarya1.png"
                   alt="VR Mahakarya Screenshot 1"
                 />
-                <img
+                <img loading="lazy"
                   src="images/mahakarya2.png"
                   alt="VR Mahakarya Screenshot 2"
                 />
-                <img
+                <img loading="lazy"
                   src="images/mahakarya3.png"
                   alt="VR Mahakarya Screenshot 3"
                 />
@@ -658,9 +226,9 @@
           >
             <div class="project-slider">
               <div class="project-gallery" id="gallery-battle-of-riau">
-                <img src="images/riau1.png" alt="Battle of Riau Screenshot 1" />
-                <img src="images/riau2.png" alt="Battle of Riau Screenshot 2" />
-                <img src="images/riau3.png" alt="Battle of Riau Screenshot 3" />
+                <img loading="lazy" src="images/riau1.png" alt="Battle of Riau Screenshot 1" />
+                <img loading="lazy" src="images/riau2.png" alt="Battle of Riau Screenshot 2" />
+                <img loading="lazy" src="images/riau3.png" alt="Battle of Riau Screenshot 3" />
               </div>
               <div class="slider-nav">
                 <button class="prev-btn" data-gallery="gallery-battle-of-riau">
@@ -742,9 +310,9 @@
           >
             <div class="project-slider">
               <div class="project-gallery" id="gallery-little-witch">
-                <img src="images/little1.jpg" alt="Little Witch Screenshot 1" />
-                <img src="images/little2.jpg" alt="Little Witch Screenshot 2" />
-                <img src="images/little3.jpg" alt="Little Witch Screenshot 3" />
+                <img loading="lazy" src="images/little1.jpg" alt="Little Witch Screenshot 1" />
+                <img loading="lazy" src="images/little2.jpg" alt="Little Witch Screenshot 2" />
+                <img loading="lazy" src="images/little3.jpg" alt="Little Witch Screenshot 3" />
               </div>
               <div class="slider-nav">
                 <button class="prev-btn" data-gallery="gallery-little-witch">
@@ -830,15 +398,15 @@
           >
             <div class="project-slider">
               <div class="project-gallery" id="gallery-bike-simulator">
-                <img
+                <img loading="lazy"
                   src="images/sumitomo1.png"
                   alt="Bike Simulator Screenshot 1"
                 />
-                <img
+                <img loading="lazy"
                   src="images/sumitomo2.png"
                   alt="Bike Simulator Screenshot 2"
                 />
-                <img
+                <img loading="lazy"
                   src="images/sumitomo3.jpg"
                   alt="Bike Simulator Screenshot 3"
                 />
@@ -937,15 +505,15 @@
           >
             <div class="gallery-slider">
               <div class="gallery-images" id="gallery-exhibition">
-                <img
+                <img loading="lazy"
                   src="images/background1.jpg"
                   alt="Game Exhibition Photo 1"
                 />
-                <img
+                <img loading="lazy"
                   src="images/background2.jpg"
                   alt="Game Exhibition Photo 2"
                 />
-                <img
+                <img loading="lazy"
                   src="images/background3.jpg"
                   alt="Game Exhibition Photo 3"
                 />
@@ -1055,7 +623,12 @@
         </div>
 
         <div class="max-w-2xl mx-auto bg-dark rounded-xl p-8 shadow-lg">
-          <div id="contact-form">
+          <form id="contact-form">
+            <!-- Honeypot field - hidden from humans, bots will fill it -->
+            <input type="text" name="website" id="website" style="position:absolute;left:-9999px;opacity:0;height:0;width:0;" tabindex="-1" autocomplete="off" />
+            
+            <!-- Step 1: Form Inputs -->
+            <div id="form-step-1">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
               <div>
                 <label for="name" class="block text-gray-400 mb-2">Name</label>
@@ -1114,8 +687,44 @@
               class="w-full bg-primary text-dark font-semibold py-3 rounded-lg hover:bg-primary/90 transition focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-dark"
             >
               Send Message
-            </button>
-          </div>
+            </div>
+
+            <!-- Step 2: OTP Verification (Hidden by default) -->
+            <div id="form-step-2" class="hidden">
+              <div class="text-center mb-6">
+                <i class="fas fa-envelope-open-text text-4xl text-primary mb-4"></i>
+                <h3 class="text-xl font-bold mb-2">Verify Your Email</h3>
+                <p class="text-gray-400 text-sm">We've sent a 6-digit code to <span id="verify-email-display" class="text-primary font-semibold"></span>.<br>Please enter it below to confirm your message.</p>
+              </div>
+              <div class="mb-6">
+                <input
+                  type="text"
+                  id="otp-code"
+                  name="otp"
+                  maxlength="6"
+                  class="w-full px-4 py-3 bg-secondary border border-gray-700 rounded-lg text-center text-2xl tracking-[0.5em] font-mono focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                  placeholder="------"
+                />
+              </div>
+              <div class="flex gap-4">
+                <button
+                  type="button"
+                  id="btn-back"
+                  class="w-1/3 bg-transparent border border-gray-600 text-gray-300 font-semibold py-3 rounded-lg hover:bg-secondary transition focus:outline-none"
+                >
+                  Back
+                </button>
+                <button
+                  type="button"
+                  id="btn-verify"
+                  class="w-2/3 bg-primary text-dark font-semibold py-3 rounded-lg hover:bg-primary/90 transition focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-dark"
+                >
+                  Verify & Send
+                </button>
+              </div>
+            </div>
+
+          </form>
         </div>
       </div>
     </section>
@@ -1165,496 +774,3 @@
         </div>
       </div>
     </footer>
-
-    <script>
-      // Make modal functions globally accessible
-      function openModal(modalId) {
-        const modal = document.getElementById(modalId);
-        if (!modal) return;
-        modal.style.display = "flex";
-        document.body.style.overflow = "hidden";
-      }
-
-      function closeModal(modalId) {
-        const modal = document.getElementById(modalId);
-        if (!modal) return;
-        modal.style.display = "none";
-        document.body.style.overflow = "auto";
-        const iframe = modal.querySelector("iframe");
-        if (iframe) {
-          const src = iframe.src;
-          iframe.src = ""; // Stop video playback
-          iframe.src = src; // Restore src for next open
-        }
-      }
-
-      (function () {
-        emailjs.init("wpZj55Q11WKHf1voD");
-
-        // Particle effect for home section
-        const canvas = document.getElementById("particle-canvas");
-        if (canvas) {
-          const ctx = canvas.getContext("2d");
-          let particles = [];
-
-          function resizeCanvas() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-          }
-
-          window.addEventListener("resize", resizeCanvas);
-          resizeCanvas();
-
-          class Particle {
-            constructor() {
-              this.x = Math.random() * canvas.width;
-              this.y = Math.random() * canvas.height;
-              this.size = Math.random() * 2 + 1;
-              this.speedX = Math.random() * 0.5 - 0.25;
-              this.speedY = Math.random() * 0.5 - 0.25;
-              this.opacity = Math.random() * 0.5 + 0.3;
-            }
-
-            update() {
-              this.x += this.speedX;
-              this.y += this.speedY;
-              if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
-              if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
-            }
-
-            draw() {
-              ctx.fillStyle = `rgba(17, 243, 211, ${this.opacity})`;
-              ctx.beginPath();
-              ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-              ctx.fill();
-            }
-          }
-
-          function initParticles() {
-            particles = [];
-            const particleCount = Math.floor(
-              (canvas.width * canvas.height) / 10000
-            );
-            for (let i = 0; i < particleCount; i++) {
-              particles.push(new Particle());
-            }
-          }
-
-          function animate() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            particles.forEach((particle) => {
-              particle.update();
-              particle.draw();
-            });
-            requestAnimationFrame(animate);
-          }
-
-          initParticles();
-          animate();
-        }
-
-        // Navigation active state and scroll handling
-        const navLinks = document.querySelectorAll(".nav-link");
-        const sections = document.querySelectorAll("section");
-
-        function updateActiveNav() {
-          let currentSection = "";
-          const scrollPosition = window.scrollY + window.innerHeight / 2;
-
-          sections.forEach((section) => {
-            const sectionTop = section.offsetTop;
-            const sectionHeight = section.offsetHeight;
-            if (
-              scrollPosition >= sectionTop &&
-              scrollPosition < sectionTop + sectionHeight
-            ) {
-              currentSection = section.getAttribute("id");
-            }
-          });
-
-          navLinks.forEach((link) => {
-            link.classList.remove("active");
-            if (link.getAttribute("href") === `#${currentSection}`) {
-              link.classList.add("active");
-            }
-          });
-        }
-
-        // Smooth scroll with animation for nav links
-        navLinks.forEach((link) => {
-          link.addEventListener("click", (e) => {
-            e.preventDefault();
-            const targetId = link.getAttribute("href").substring(1);
-            const targetSection = document.getElementById(targetId);
-
-            if (targetSection) {
-              targetSection.scrollIntoView({ behavior: "smooth" });
-              setTimeout(updateActiveNav, 600);
-              // Close mobile menu if open
-              const mobileMenu = document.getElementById("mobile-menu");
-              if (mobileMenu.classList.contains("active")) {
-                toggleMobileMenu();
-              }
-            }
-          });
-        });
-
-        // Smooth scroll for View Projects and Contact Me buttons
-        const viewProjectsBtn = document.querySelector(".view-projects");
-        const contactMeBtn = document.querySelector(".contact-me");
-
-        if (viewProjectsBtn) {
-          viewProjectsBtn.addEventListener("click", (e) => {
-            e.preventDefault();
-            const targetSection = document.getElementById("projects");
-            if (targetSection) {
-              targetSection.scrollIntoView({ behavior: "smooth" });
-              setTimeout(updateActiveNav, 600);
-            }
-          });
-        }
-
-        if (contactMeBtn) {
-          contactMeBtn.addEventListener("click", (e) => {
-            e.preventDefault();
-            const targetSection = document.getElementById("contact");
-            if (targetSection) {
-              targetSection.scrollIntoView({ behavior: "smooth" });
-              setTimeout(updateActiveNav, 600);
-            }
-          });
-        }
-
-        // Update active nav on scroll
-        window.addEventListener("scroll", updateActiveNav);
-
-        // Initial update on page load
-        window.addEventListener("DOMContentLoaded", updateActiveNav);
-
-        // Mobile menu toggle
-        const mobileToggle = document.getElementById("mobile-toggle");
-        const mobileClose = document.getElementById("mobile-close");
-        const mobileMenu = document.getElementById("mobile-menu");
-
-        function toggleMobileMenu() {
-          if (mobileMenu.classList.contains("active")) {
-            mobileMenu.classList.add("closing");
-            setTimeout(() => {
-              mobileMenu.classList.remove("active", "closing");
-            }, 300);
-            mobileToggle.innerHTML = '<i class="fas fa-bars text-2xl"></i>';
-            document.body.style.overflow = "auto";
-          } else {
-            mobileMenu.classList.add("active");
-            mobileToggle.innerHTML = '<i class="fas fa-times text-2xl"></i>';
-            document.body.style.overflow = "hidden";
-          }
-        }
-
-        mobileToggle.addEventListener("click", toggleMobileMenu);
-        mobileClose.addEventListener("click", toggleMobileMenu);
-
-        // Store slider states
-        const sliderStates = new Map();
-
-        // Image Modal variables
-        let currentImageIndex = 0;
-        let currentImageUrls = [];
-        let currentGalleryId = null;
-
-        function openImageModal(galleryId, imageUrls, initialIndex = 0) {
-          const modal = document.getElementById("image-modal");
-          const modalImage = document.getElementById("modal-image");
-
-          if (!modal || !modalImage) return;
-
-          currentImageUrls = imageUrls;
-          currentImageIndex = initialIndex;
-          currentGalleryId = galleryId;
-
-          modalImage.src = imageUrls[currentImageIndex];
-          modalImage.alt = `Project Image ${currentImageIndex + 1}`;
-          modal.style.display = "flex";
-          document.body.style.overflow = "hidden";
-
-          updateImageModalButtons();
-        }
-
-        function closeImageModal() {
-          const modal = document.getElementById("image-modal");
-          if (!modal) return;
-
-          modal.style.display = "none";
-          document.body.style.overflow = "auto";
-
-          if (currentGalleryId) {
-            updateSliderButtons(currentGalleryId);
-          }
-
-          currentImageIndex = 0;
-          currentImageUrls = [];
-          currentGalleryId = null;
-        }
-
-        function updateImageModalButtons() {
-          const prevBtn = document.getElementById("image-prev-btn");
-          const nextBtn = document.getElementById("image-next-btn");
-
-          if (prevBtn) prevBtn.disabled = currentImageIndex === 0;
-          if (nextBtn)
-            nextBtn.disabled =
-              currentImageIndex === currentImageUrls.length - 1;
-        }
-
-        function prevImageModal() {
-          if (currentImageIndex > 0) {
-            currentImageIndex--;
-            const modalImage = document.getElementById("modal-image");
-            if (modalImage) {
-              modalImage.src = currentImageUrls[currentImageIndex];
-              modalImage.alt = `Project Image ${currentImageIndex + 1}`;
-              updateImageModalButtons();
-              updateGalleryPosition(currentGalleryId, currentImageIndex);
-            }
-          }
-        }
-
-        function nextImageModal() {
-          if (currentImageIndex < currentImageUrls.length - 1) {
-            currentImageIndex++;
-            const modalImage = document.getElementById("modal-image");
-            if (modalImage) {
-              modalImage.src = currentImageUrls[currentImageIndex];
-              modalImage.alt = `Project Image ${currentImageIndex + 1}`;
-              updateImageModalButtons();
-              updateGalleryPosition(currentGalleryId, currentImageIndex);
-            }
-          }
-        }
-
-        function updateGalleryPosition(galleryId, index) {
-          const gallery = document.getElementById(galleryId);
-          if (!gallery) return;
-
-          gallery.style.transform = `translateX(-${index * 100}%)`;
-          updateSliderButtons(galleryId);
-        }
-
-        function updateSliderButtons(galleryId) {
-          const gallery = document.getElementById(galleryId);
-          if (!gallery) return;
-
-          const images = gallery.querySelectorAll("img");
-          const prevBtn = gallery.parentElement.querySelector(".prev-btn");
-          const nextBtn = gallery.parentElement.querySelector(".next-btn");
-
-          const currentIndex = sliderStates.get(galleryId) || 0;
-
-          images.forEach((img, index) => {
-            img.classList.toggle("active", index === currentIndex);
-          });
-
-          if (prevBtn) prevBtn.disabled = currentIndex === 0;
-          if (nextBtn) nextBtn.disabled = currentIndex === images.length - 1;
-        }
-
-        function prevImage(galleryId) {
-          let currentIndex = sliderStates.get(galleryId) || 0;
-          if (currentIndex > 0) {
-            currentIndex--;
-            sliderStates.set(galleryId, currentIndex);
-            updateGalleryPosition(galleryId, currentIndex);
-          }
-        }
-
-        function nextImage(galleryId) {
-          const gallery = document.getElementById(galleryId);
-          if (!gallery) return;
-
-          const images = gallery.querySelectorAll("img");
-          let currentIndex = sliderStates.get(galleryId) || 0;
-          if (currentIndex < images.length - 1) {
-            currentIndex++;
-            sliderStates.set(galleryId, currentIndex);
-            updateGalleryPosition(galleryId, currentIndex);
-          }
-        }
-
-        // Function to truncate text to a specified number of words
-        function truncateText(text, wordLimit) {
-          const words = text.trim().split(/\s+/);
-          if (words.length <= wordLimit) return text;
-          return words.slice(0, wordLimit).join(" ") + "...";
-        }
-
-        document.addEventListener("DOMContentLoaded", function () {
-          // Initialize description toggle for project cards
-          document.querySelectorAll(".project-card").forEach((card) => {
-            const fullDescription = card.querySelector(".full-description");
-            const shortDescription = card.querySelector(".short-description");
-            const toggleButton = card.querySelector(".toggle-description");
-
-            if (fullDescription && shortDescription && toggleButton) {
-              shortDescription.textContent = truncateText(
-                fullDescription.textContent,
-                20
-              );
-
-              toggleButton.addEventListener("click", () => {
-                const isShort =
-                  toggleButton.getAttribute("data-state") === "short";
-                if (isShort) {
-                  shortDescription.classList.add("hidden");
-                  fullDescription.classList.remove("hidden");
-                  toggleButton.setAttribute("data-state", "full");
-                  toggleButton.textContent = "See Less ↑";
-                } else {
-                  shortDescription.classList.remove("hidden");
-                  fullDescription.classList.add("hidden");
-                  toggleButton.setAttribute("data-state", "short");
-                  toggleButton.textContent = "See All →";
-                }
-              });
-            }
-
-            // Slider and modal logic for project cards
-            const gallery = card.querySelector(".project-gallery");
-            if (!gallery) return;
-
-            const galleryId = gallery.id;
-            sliderStates.set(galleryId, 0);
-            gallery.style.transform = "translateX(0%)";
-            updateSliderButtons(galleryId);
-
-            const imageUrls = JSON.parse(card.dataset.images || "[]");
-
-            gallery.querySelectorAll("img").forEach((img, index) => {
-              img.addEventListener("click", () => {
-                sliderStates.set(galleryId, index);
-                updateSliderButtons(galleryId);
-                openImageModal(galleryId, imageUrls, index);
-              });
-            });
-
-            const prevBtn = card.querySelector(".prev-btn");
-            if (prevBtn) {
-              prevBtn.addEventListener("click", () => prevImage(galleryId));
-            }
-
-            const nextBtn = card.querySelector(".next-btn");
-            if (nextBtn) {
-              nextBtn.addEventListener("click", () => nextImage(galleryId));
-            }
-          });
-
-          // Slider and modal logic for gallery cards
-          document.querySelectorAll(".gallery-card").forEach((card) => {
-            const gallery = card.querySelector(".gallery-images");
-            if (!gallery) return;
-
-            const galleryId = gallery.id;
-            sliderStates.set(galleryId, 0);
-            gallery.style.transform = "translateX(0%)";
-            updateSliderButtons(galleryId);
-
-            const imageUrls = JSON.parse(card.dataset.images || "[]");
-
-            gallery.querySelectorAll("img").forEach((img, index) => {
-              img.addEventListener("click", () => {
-                sliderStates.set(galleryId, index);
-                updateSliderButtons(galleryId);
-                openImageModal(galleryId, imageUrls, index);
-              });
-            });
-
-            const prevBtn = card.querySelector(".prev-btn");
-            if (prevBtn) {
-              prevBtn.addEventListener("click", () => prevImage(galleryId));
-            }
-
-            const nextBtn = card.querySelector(".next-btn");
-            if (nextBtn) {
-              nextBtn.addEventListener("click", () => nextImage(galleryId));
-            }
-          });
-
-          document.querySelectorAll(".modal").forEach((modal) => {
-            modal.addEventListener("click", (e) => {
-              if (e.target === modal) {
-                closeModal(modal.id);
-              }
-            });
-          });
-
-          const imageModal = document.getElementById("image-modal");
-          if (imageModal) {
-            imageModal.addEventListener("click", (e) => {
-              if (e.target === imageModal) {
-                closeImageModal();
-              }
-            });
-
-            const modalImage = document.getElementById("modal-image");
-            if (modalImage) {
-              modalImage.addEventListener("click", () => {
-                nextImageModal();
-              });
-            }
-          }
-
-          const imageModalClose = document.querySelector(".image-modal-close");
-          if (imageModalClose) {
-            imageModalClose.addEventListener("click", closeImageModal);
-          }
-
-          const imagePrevBtn = document.getElementById("image-prev-btn");
-          if (imagePrevBtn) {
-            imagePrevBtn.addEventListener("click", prevImageModal);
-          }
-
-          const imageNextBtn = document.getElementById("image-next-btn");
-          if (imageNextBtn) {
-            imageNextBtn.addEventListener("click", () => nextImageModal());
-          }
-
-          const contactForm = document.getElementById("contact-form");
-          if (contactForm) {
-            contactForm.addEventListener("submit", function (event) {
-              event.preventDefault();
-              const formMessage = document.getElementById("form-message");
-              if (!formMessage) return;
-
-              formMessage.textContent = "Sending...";
-              formMessage.className = "text-center mb-4 text-primary";
-
-              emailjs
-                .sendForm("service_p9qy2gx", "template_zfc7mh2", this)
-                .then(
-                  () => {
-                    formMessage.textContent = "Message sent successfully!";
-                    formMessage.className = "text-center mb-4 text-green-400";
-                    this.reset();
-                  },
-                  (error) => {
-                    formMessage.textContent =
-                      "Failed to send message. Please try again.";
-                    formMessage.className = "text-center mb-4 text-red-400";
-                    console.error("EmailJS error:", error);
-                  }
-                );
-            });
-          }
-
-          const modalImage = document.getElementById("modal-image");
-          if (modalImage) {
-            modalImage.addEventListener("error", () => {
-              console.error("Failed to load image:", modalImage.src);
-              modalImage.src = "";
-              modalImage.alt = "Image failed to load";
-            });
-          }
-        });
-      })();
-    </script>
-  </body>
-</html>
