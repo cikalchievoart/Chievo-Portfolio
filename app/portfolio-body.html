@@ -1,777 +1,555 @@
-<header
-      class="fixed w-full bg-dark/80 backdrop-blur-sm z-50 border-b border-primary/10"
-    >
-      <nav
-        class="container mx-auto px-6 py-4 flex justify-between items-center"
-      >
-        <div class="flex items-center space-x-2">
-          <div class="w-8 h-8 bg-primary rounded-full animate-pulse-slow"></div>
-          <span
-            class="text-xl font-bold bg-gradient-to-r from-primary to-emerald-400 bg-clip-text text-transparent"
-            >Cikal Chievo Arment</span
-          >
-        </div>
-        <div class="hidden md:flex space-x-8">
-          <a
-            href="#home"
-            class="nav-link text-gray-300 hover:text-primary transition"
-            >Home</a
-          >
-          <a
-            href="#projects"
-            class="nav-link text-gray-300 hover:text-primary transition"
-            >Projects</a
-          >
-          <a
-            href="#gallery"
-            class="nav-link text-gray-300 hover:text-primary transition"
-            >Gallery</a
-          >
-          <a
-            href="#skills"
-            class="nav-link text-gray-300 hover:text-primary transition"
-            >Skills</a
-          >
-          <a
-            href="#contact"
-            class="nav-link text-gray-300 hover:text-primary transition"
-            >Contact</a
-          >
-        </div>
-        <button
-          id="mobile-toggle"
-          class="md:hidden text-gray-300 focus:outline-none"
-        >
-          <i class="fas fa-bars text-2xl"></i>
-        </button>
-      </nav>
-      <div id="mobile-menu" class="mobile-menu">
-        <button id="mobile-close" class="text-gray-300 self-end">
-          <i class="fas fa-times text-2xl"></i>
-        </button>
-        <a href="#home" class="nav-link">Home</a>
-        <a href="#projects" class="nav-link">Projects</a>
-        <a href="#gallery" class="nav-link">Gallery</a>
-        <a href="#skills" class="nav-link">Skills</a>
-        <a href="#contact" class="nav-link">Contact</a>
-      </div>
-    </header>
+<header class="fixed w-full bg-dark/80 backdrop-blur-sm z-50 border-b border-primary/10">
+  <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+    <div class="flex items-center space-x-2">
+      <div class="w-8 h-8 bg-primary rounded-full animate-pulse-slow"></div>
+      <span class="text-xl font-bold bg-gradient-to-r from-primary to-emerald-400 bg-clip-text text-transparent">Cikal
+        Chievo Arment</span>
+    </div>
+    <div class="desktop-nav space-x-8">
+      <a href="#home" class="nav-link text-gray-300 hover:text-primary transition">Home</a>
+      <a href="#projects" class="nav-link text-gray-300 hover:text-primary transition">Projects</a>
+      <a href="#gallery" class="nav-link text-gray-300 hover:text-primary transition">Gallery</a>
+      <a href="#skills" class="nav-link text-gray-300 hover:text-primary transition">Skills</a>
+      <a href="#contact" class="nav-link text-gray-300 hover:text-primary transition">Contact</a>
+    </div>
+    <button id="mobile-toggle" class="mobile-toggle text-gray-300 focus:outline-none">
+      <i class="fas fa-bars text-2xl"></i>
+    </button>
+  </nav>
+  <div id="mobile-menu" class="mobile-menu">
+    <button id="mobile-close" class="text-gray-300 self-end">
+      <i class="fas fa-times text-2xl"></i>
+    </button>
+    <a href="#home" class="nav-link">Home</a>
+    <a href="#projects" class="nav-link">Projects</a>
+    <a href="#gallery" class="nav-link">Gallery</a>
+    <a href="#skills" class="nav-link">Skills</a>
+    <a href="#contact" class="nav-link">Contact</a>
+  </div>
+</header>
 
-    <section id="home" class="min-h-screen flex items-center pt-20">
-      <canvas id="particle-canvas"></canvas>
-      <div
-        class="container mx-auto px-6 py-16 flex flex-col md:flex-row items-center"
-      >
-        <div class="md:w-1/2 mb-12 md:mb-0">
-          <h1 class="text-4xl md:text-6xl font-bold leading-tight mb-6">
-            Hi, I'm <span class="text-primary">Cikal Chievo Arment</span><br />
-            <span class="text-lg md:text-2xl text-gray-300"
-              >Unity Game Programmer</span
-            >
-          </h1>
-          <p class="text-lg text-gray-400 mb-8 max-w-lg">
-            I'm a soon-to-be graduate in Multimedia Engineering Technology with
-            a focus on game development using Unity and C#. I’ve built immersive
-            VR experiences and hardware-integrated simulations, combining
-            creative design with technical execution. I'm excited to bring
-            innovative and interactive solutions to real-world applications.
-          </p>
-          <div class="flex space-x-4">
-            <a
-              href="#projects"
-              class="px-8 py-3 bg-primary text-dark font-semibold rounded-full hover:bg-primary/80 transition view-projects"
-            >
-              View Projects
-            </a>
-            <a
-              href="#contact"
-              class="px-8 py-3 border-2 border-primary text-primary font-semibold rounded-full hover:bg-primary/10 transition contact-me"
-            >
-              Contact Me
-            </a>
-          </div>
-        </div>
-
-        <div class="md:w-1/2 flex justify-center animate-float">
-          <div
-            class="relative w-64 h-64 md:w-80 md:h-80 bg-secondary rounded-2xl p-4 shadow-lg"
-          >
-            <div
-              class="absolute inset-0 border-2 border-primary/30 rounded-2xl -m-2"
-            ></div>
-            <img
-              src="images/profil.jpg"
-              alt="Game developer working on a high-tech workstation with multiple monitors displaying game engines and code"
-              class="w-full h-full object-cover rounded-xl opacity-90"
-            />
-            <div
-              class="absolute w-16 h-16 bg-primary rounded-full -bottom-5 -right-5 flex items-center justify-center"
-            >
-              <i class="fas fa-gamepad text-2xl text-dark"></i>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="projects" class="py-20 bg-secondary">
-      <div class="container mx-auto px-6">
-        <div class="text-center mb-16">
-          <h2 class="text-3xl font-bold mb-4">
-            My <span class="text-primary">Game & Simulation</span> Projects
-          </h2>
-          <div class="w-20 h-1 bg-primary mx-auto"></div>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-start">
-          <div
-            class="project-card bg-dark rounded-xl overflow-hidden shadow-lg transition duration-500"
-            data-images='[
-              "images/mahakarya1.png",
-              "images/mahakarya2.png",
-              "images/mahakarya3.png"
-            ]'
-          >
-            <div class="project-slider">
-              <div class="project-gallery" id="gallery-mahakarya">
-                <img loading="lazy"
-                  src="images/mahakarya1.png"
-                  alt="VR Mahakarya Screenshot 1"
-                />
-                <img loading="lazy"
-                  src="images/mahakarya2.png"
-                  alt="VR Mahakarya Screenshot 2"
-                />
-                <img loading="lazy"
-                  src="images/mahakarya3.png"
-                  alt="VR Mahakarya Screenshot 3"
-                />
-              </div>
-              <div class="slider-nav">
-                <button class="prev-btn" data-gallery="gallery-mahakarya">
-                  <i class="fas fa-chevron-left"></i>
-                </button>
-                <button class="next-btn" data-gallery="gallery-mahakarya">
-                  <i class="fas fa-chevron-right"></i>
-                </button>
-              </div>
-            </div>
-            <div class="p-6">
-              <h3 class="text-xl font-bold mb-2">Game VR Mahakarya</h3>
-              <div class="project-description">
-                <p class="text-gray-400 mb-4 short-description"></p>
-                <p class="text-gray-400 mb-4 full-description hidden">
-                  Developed an immersive vocational exhibition VR game using
-                  Unity and Oculus. I was responsible for implementing enemy AI
-                  (for interactive storytelling), object interaction systems
-                  (grabbing, triggering, inspecting), and building modular
-                  environments. The game showcases iconic Indonesian landmarks
-                  such as Borobudur, Ulun Danu, Mount Merapi, Prambanan, Monas,
-                  Kota Tua, Jam Gadang, Toraja, and Honai, each embedded with
-                  real vocational student works from SMK and polytechnic
-                  institutions. This game was showcased at a national game event
-                  and received widespread appreciation for its cultural depth
-                  and interactive educational concept.
-                </p>
-                <button
-                  class="toggle-description text-primary text-sm font-semibold hover:underline focus:outline-none"
-                  data-state="short"
-                >
-                  See All →
-                </button>
-              </div>
-              <div class="flex flex-wrap gap-2 mb-4">
-                <span
-                  class="px-3 py-1 bg-secondary rounded-full text-xs text-primary"
-                  >Unity</span
-                >
-                <span
-                  class="px-3 py-1 bg-secondary rounded-full text-xs text-primary"
-                  >Virtual Reality</span
-                >
-              </div>
-              <button
-                onclick="openModal('modal-mahakarya')"
-                class="text-primary text-sm font-semibold hover:underline focus:outline-none"
-              >
-                View Documentation →
-              </button>
-            </div>
-          </div>
-          <div id="modal-mahakarya" class="modal">
-            <div class="modal-content">
-              <span class="modal-close" onclick="closeModal('modal-mahakarya')"
-                ><i class="fas fa-times"></i
-              ></span>
-              <iframe
-                width="560"
-                height="315"
-                src="https://www.youtube.com/embed/jSHufoJGI6M?si=mGTpjsrRfMUCtcXQ"
-                title="YouTube video player"
-                frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                referrerpolicy="strict-origin-when-cross-origin"
-                allowfullscreen
-              ></iframe>
-            </div>
-          </div>
-
-          <div
-            class="project-card bg-dark rounded-xl overflow-hidden shadow-lg transition duration-500"
-            data-images='[
-              "images/riau1.png",
-              "images/riau2.png",
-              "images/riau3.png"
-            ]'
-          >
-            <div class="project-slider">
-              <div class="project-gallery" id="gallery-battle-of-riau">
-                <img loading="lazy" src="images/riau1.png" alt="Battle of Riau Screenshot 1" />
-                <img loading="lazy" src="images/riau2.png" alt="Battle of Riau Screenshot 2" />
-                <img loading="lazy" src="images/riau3.png" alt="Battle of Riau Screenshot 3" />
-              </div>
-              <div class="slider-nav">
-                <button class="prev-btn" data-gallery="gallery-battle-of-riau">
-                  <i class="fas fa-chevron-left"></i>
-                </button>
-                <button class="next-btn" data-gallery="gallery-battle-of-riau">
-                  <i class="fas fa-chevron-right"></i>
-                </button>
-              </div>
-            </div>
-            <div class="p-6">
-              <h3 class="text-xl font-bold mb-2">Game VR Battle of Riau</h3>
-              <div class="project-description">
-                <p class="text-gray-400 mb-4 short-description"></p>
-                <p class="text-gray-400 mb-4 full-description hidden">
-                  Contributed as an environment and gameplay systems developer
-                  for a historical VR FPS game built using Unity and Oculus. The
-                  game reenacts the 1784 war between the Riau-Lingga Kingdom and
-                  Dutch forces. I designed immersive 3D environments
-                  representing Malay coastal territories, programmed NPCs
-                  onboard enemy ships, and implemented a dynamic difficulty
-                  adjustment (DDA) system based on real-time player performance
-                  (score-driven scaling). This game was showcased at a national
-                  game exhibition and received appreciation for its historical
-                  narrative and gameplay innovation.
-                </p>
-                <button
-                  class="toggle-description text-primary text-sm font-semibold hover:underline focus:outline-none"
-                  data-state="short"
-                >
-                  See All →
-                </button>
-              </div>
-              <div class="flex flex-wrap gap-2 mb-4">
-                <span
-                  class="px-3 py-1 bg-secondary rounded-full text-xs text-primary"
-                  >Unity</span
-                >
-                <span
-                  class="px-3 py-1 bg-secondary rounded-full text-xs text-primary"
-                  >Virtual Reality</span
-                >
-              </div>
-              <button
-                onclick="openModal('modal-battle-of-riau')"
-                class="text-primary text-sm font-semibold hover:underline focus:outline-none"
-              >
-                View Documentation →
-              </button>
-            </div>
-          </div>
-          <div id="modal-battle-of-riau" class="modal">
-            <div class="modal-content">
-              <span
-                class="modal-close"
-                onclick="closeModal('modal-battle-of-riau')"
-                ><i class="fas fa-times"></i
-              ></span>
-              <iframe
-                width="560"
-                height="315"
-                src="https://www.youtube.com/embed/ei0mxm1s3yg?si=6IBgRWKWWSsouQ7x"
-                title="YouTube video player"
-                frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                referrerpolicy="strict-origin-when-cross-origin"
-                allowfullscreen
-              ></iframe>
-            </div>
-          </div>
-
-          <div
-            class="project-card bg-dark rounded-xl overflow-hidden shadow-lg transition duration-500"
-            data-images='[
-              "images/little1.jpg",
-              "images/little2.jpg",
-              "images/little3.jpg"
-            ]'
-          >
-            <div class="project-slider">
-              <div class="project-gallery" id="gallery-little-witch">
-                <img loading="lazy" src="images/little1.jpg" alt="Little Witch Screenshot 1" />
-                <img loading="lazy" src="images/little2.jpg" alt="Little Witch Screenshot 2" />
-                <img loading="lazy" src="images/little3.jpg" alt="Little Witch Screenshot 3" />
-              </div>
-              <div class="slider-nav">
-                <button class="prev-btn" data-gallery="gallery-little-witch">
-                  <i class="fas fa-chevron-left"></i>
-                </button>
-                <button class="next-btn" data-gallery="gallery-little-witch">
-                  <i class="fas fa-chevron-right"></i>
-                </button>
-              </div>
-            </div>
-            <div class="p-6">
-              <h3 class="text-xl font-bold mb-2">
-                Game Little Witch: The Wanderer
-              </h3>
-              <div class="project-description">
-                <p class="text-gray-400 mb-4 short-description"></p>
-                <p class="text-gray-400 mb-4 full-description hidden">
-                  A side-scrolling adventure game inspired by Space Impact,
-                  featuring 3D assets and a magical witch theme. The game
-                  includes 15 levels with progressive difficulty and a character
-                  selection system. I contributed as a game programmer,
-                  developing key mechanics such as level-locking logic, enemy
-                  movement and shooting behavior, and integrating a custom
-                  Arduino-based joystick controller. The project showcases both
-                  gameplay balance and hardware interaction.
-                </p>
-                <button
-                  class="toggle-description text-primary text-sm font-semibold hover:underline focus:outline-none"
-                  data-state="short"
-                >
-                  See All →
-                </button>
-              </div>
-              <div class="flex flex-wrap gap-2 mb-4">
-                <span
-                  class="px-3 py-1 bg-secondary rounded-full text-xs text-primary"
-                  >Unity</span
-                >
-                <span
-                  class="px-3 py-1 bg-secondary rounded-full text-xs text-primary"
-                  >3D</span
-                >
-                <span
-                  class="px-3 py-1 bg-secondary rounded-full text-xs text-primary"
-                  >Arduino Controller</span
-                >
-              </div>
-              <button
-                onclick="openModal('modal-little-witch')"
-                class="text-primary text-sm font-semibold hover:underline focus:outline-none"
-              >
-                View Documentation →
-              </button>
-            </div>
-          </div>
-          <div id="modal-little-witch" class="modal">
-            <div class="modal-content">
-              <span
-                class="modal-close"
-                onclick="closeModal('modal-little-witch')"
-                ><i class="fas fa-times"></i
-              ></span>
-              <iframe
-                width="560"
-                height="315"
-                src="https://www.youtube.com/embed/Bu-Tcuuw-yU?si=gvdlVxFzqDCSv3oL"
-                title="YouTube video player"
-                frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                referrerpolicy="strict-origin-when-cross-origin"
-                allowfullscreen
-              ></iframe>
-            </div>
-          </div>
-
-          <div
-            class="project-card bg-dark rounded-xl overflow-hidden shadow-lg transition duration-500"
-            data-images='[
-              "images/sumitomo1.png",
-              "images/sumitomo2.png",
-              "images/sumitomo3.jpg"
-            ]'
-          >
-            <div class="project-slider">
-              <div class="project-gallery" id="gallery-bike-simulator">
-                <img loading="lazy"
-                  src="images/sumitomo1.png"
-                  alt="Bike Simulator Screenshot 1"
-                />
-                <img loading="lazy"
-                  src="images/sumitomo2.png"
-                  alt="Bike Simulator Screenshot 2"
-                />
-                <img loading="lazy"
-                  src="images/sumitomo3.jpg"
-                  alt="Bike Simulator Screenshot 3"
-                />
-              </div>
-              <div class="slider-nav">
-                <button class="prev-btn" data-gallery="gallery-bike-simulator">
-                  <i class="fas fa-chevron-left"></i>
-                </button>
-                <button class="next-btn" data-gallery="gallery-bike-simulator">
-                  <i class="fas fa-chevron-right"></i>
-                </button>
-              </div>
-            </div>
-            <div class="p-6">
-              <h3 class="text-xl font-bold mb-2">Bike Simulator PT. XYZ</h3>
-              <div class="project-description">
-                <p class="text-gray-400 mb-4 short-description"></p>
-                <p class="text-gray-400 mb-4 full-description hidden">
-                  A motorcycle driving simulator developed using Unity, designed
-                  to provide a realistic riding experience from public roads to
-                  the final destination at PT. XYZ. The simulation features
-                  traffic systems, dynamic obstacles, and immersive road
-                  environments that reflect real-life driving challenges. I
-                  served as the game programmer, responsible for implementing
-                  traffic NPC movement and logic, motorcycle engine sound
-                  system, player scoring mechanics, and full hardware
-                  integration using Arduino sensors attached to a real
-                  motorcycle frame. The simulator was used for training and
-                  received positive feedback for its realism and functionality.
-                </p>
-                <button
-                  class="toggle-description text-primary text-sm font-semibold hover:underline focus:outline-none"
-                  data-state="short"
-                >
-                  See All →
-                </button>
-              </div>
-              <div class="flex flex-wrap gap-2 mb-4">
-                <span
-                  class="px-3 py-1 bg-secondary rounded-full text-xs text-primary"
-                  >Unity</span
-                >
-                <span
-                  class="px-3 py-1 bg-secondary rounded-full text-xs text-primary"
-                  >Simulation</span
-                >
-                <span
-                  class="px-3 py-1 bg-secondary rounded-full text-xs text-primary"
-                  >Arduino Controller</span
-                >
-              </div>
-              <button
-                onclick="openModal('modal-bike-simulator')"
-                class="text-primary text-sm font-semibold hover:underline focus:outline-none"
-              >
-                View Documentation →
-              </button>
-            </div>
-          </div>
-          <div id="modal-bike-simulator" class="modal">
-            <div class="modal-content">
-              <span
-                class="modal-close"
-                onclick="closeModal('modal-bike-simulator')"
-                ><i class="fas fa-times"></i
-              ></span>
-              <iframe
-                src="https://drive.google.com/file/d/1wIdemcbPuNke-AauVveo_epg4kZE0ccP/preview"
-                title="Bike Simulator PT. XYZ Video"
-                frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowfullscreen
-              ></iframe>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="gallery" class="py-20">
-      <div class="container mx-auto px-6">
-        <div class="text-center mb-16">
-          <h2 class="text-3xl font-bold mb-4">
-            Game Exhibition <span class="text-primary">Gallery</span>
-          </h2>
-          <div class="w-20 h-1 bg-primary mx-auto"></div>
-        </div>
-        <div class="grid grid-cols-1 gap-8 justify-items-center">
-          <div
-            class="gallery-card bg-dark rounded-xl overflow-hidden shadow-lg transition duration-500"
-            data-images='[
-              "images/background1.jpg",
-              "images/background2.jpg",
-              "images/background3.jpg"
-            ]'
-          >
-            <div class="gallery-slider">
-              <div class="gallery-images" id="gallery-exhibition">
-                <img loading="lazy"
-                  src="images/background1.jpg"
-                  alt="Game Exhibition Photo 1"
-                />
-                <img loading="lazy"
-                  src="images/background2.jpg"
-                  alt="Game Exhibition Photo 2"
-                />
-                <img loading="lazy"
-                  src="images/background3.jpg"
-                  alt="Game Exhibition Photo 3"
-                />
-              </div>
-              <div class="slider-nav">
-                <button class="prev-btn" data-gallery="gallery-exhibition">
-                  <i class="fas fa-chevron-left"></i>
-                </button>
-                <button class="next-btn" data-gallery="gallery-exhibition">
-                  <i class="fas fa-chevron-right"></i>
-                </button>
-              </div>
-            </div>
-            <div class="p-6">
-              <h3 class="text-xl font-bold mb-2">Game Exhibition Moments</h3>
-              <p class="text-gray-400 mb-4">
-                Captured moments from the INTI Gamecomm & Animation EXPO 2024 at
-                Jakarta International EXPO, North Jakarta, showcasing my VR and
-                simulation projects with DigiArs Game Development Team
-                (2024–2025), featuring interactive setups and visitor
-                engagement.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <div id="image-modal" class="image-modal">
-      <div class="image-modal-content">
-        <span class="image-modal-close"><i class="fas fa-times"></i></span>
-        <img id="modal-image" src="" alt="Project Image" />
-        <div class="image-slider-nav">
-          <button id="image-prev-btn" class="prev-btn">
-            <i class="fas fa-chevron-left"></i>
-          </button>
-          <button id="image-next-btn" class="next-btn">
-            <i class="fas fa-chevron-right"></i>
-          </button>
-        </div>
+<section id="home" class="min-h-screen flex items-center pt-20">
+  <canvas id="particle-canvas"></canvas>
+  <div class="container mx-auto px-6 py-16 flex md-flex-row items-center">
+    <div class="md-w-half mb-12 md-mb-0">
+      <h1 class="md-text-6xl font-bold leading-tight mb-6">
+        Hi, I'm <span class="text-primary">Cikal Chievo Arment</span><br />
+        <span class="text-lg md-text-2xl text-gray-300">Unity Game Programmer</span>
+      </h1>
+      <p class="text-lg text-gray-400 mb-8 max-w-lg">
+        I'm a soon-to-be graduate in Multimedia Engineering Technology with
+        a focus on game development using Unity and C#. I’ve built immersive
+        VR experiences and hardware-integrated simulations, combining
+        creative design with technical execution. I'm excited to bring
+        innovative and interactive solutions to real-world applications.
+      </p>
+      <div class="flex space-x-4">
+        <a href="#projects"
+          class="px-8 py-3 bg-primary text-dark font-semibold rounded-full hover:bg-primary/80 transition view-projects">
+          View Projects
+        </a>
+        <a href="#contact"
+          class="px-8 py-3 border-2 border-primary text-primary font-semibold rounded-full hover:bg-primary/10 transition contact-me">
+          Contact Me
+        </a>
       </div>
     </div>
 
-    <section id="skills" class="py-20">
-      <div class="container mx-auto px-6">
-        <div class="text-center mb-16">
-          <h2 class="text-3xl font-bold mb-4">
-            Technical <span class="text-primary">Skills</span>
-          </h2>
-          <div class="w-20 h-1 bg-primary mx-auto"></div>
-        </div>
-
-        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8">
-          <div class="text-center p-6 bg-secondary rounded-xl">
-            <div class="skill-icon text-5xl mb-4 text-primary">
-              <i class="fab fa-unity"></i>
-            </div>
-            <h3 class="font-semibold mb-2">Unity</h3>
-            <p class="text-sm text-gray-400">2+ years</p>
-          </div>
-          <div class="text-center p-6 bg-secondary rounded-xl">
-            <div class="skill-icon text-5xl mb-4 text-primary">
-              <i class="fas fa-laptop-code"></i>
-            </div>
-            <h3 class="font-semibold mb-2">C#</h3>
-            <p class="text-sm text-gray-400">2+ years</p>
-          </div>
-          <div class="text-center p-6 bg-secondary rounded-xl">
-            <div class="skill-icon text-5xl mb-4 text-primary">
-              <i class="fas fa-cogs"></i>
-            </div>
-            <h3 class="font-semibold mb-2">Embedded Systems Integration</h3>
-            <p class="text-sm text-gray-400">1+ years</p>
-          </div>
-          <div class="text-center p-6 bg-secondary rounded-xl">
-            <div class="skill-icon text-5xl mb-4 text-primary">
-              <i class="fas fa-users"></i>
-            </div>
-            <h3 class="font-semibold mb-2">Teamwork</h3>
-            <p class="text-sm text-gray-400">Collaboration</p>
-          </div>
-          <div class="text-center p-6 bg-secondary rounded-xl">
-            <div class="skill-icon text-5xl mb-4 text-primary">
-              <i class="fas fa-lightbulb"></i>
-            </div>
-            <h3 class="font-semibold mb-2">Problem Solving</h3>
-            <p class="text-sm text-gray-400">Creative</p>
-          </div>
-          <div class="text-center p-6 bg-secondary rounded-xl">
-            <div class="skill-icon text-5xl mb-4 text-primary">
-              <i class="fas fa-clock"></i>
-            </div>
-            <h3 class="font-semibold mb-2">Time Management</h3>
-            <p class="text-sm text-gray-400">Effective</p>
-          </div>
+    <div class="md-w-half flex justify-center animate-float">
+      <div class="relative w-64 h-64 md-w-80 md-h-80 bg-secondary rounded-2xl p-4 shadow-lg">
+        <div class="absolute inset-0 border-2 border-primary/30 rounded-2xl -m-2"></div>
+        <img src="images/profil.jpg"
+          alt="Game developer working on a high-tech workstation with multiple monitors displaying game engines and code"
+          class="w-full h-full object-cover rounded-xl opacity-90" />
+        <div class="absolute w-16 h-16 bg-primary rounded-full -bottom-5 -right-5 flex items-center justify-center">
+          <i class="fas fa-gamepad text-2xl text-dark"></i>
         </div>
       </div>
-    </section>
+    </div>
+  </div>
+</section>
 
-    <section id="contact" class="py-20 bg-secondary">
-      <div class="container mx-auto px-6">
-        <div class="text-center mb-16">
-          <h2 class="text-3xl font-bold mb-4">
-            Get In <span class="text-primary">Touch</span>
-          </h2>
-          <div class="w-20 h-1 bg-primary mx-auto"></div>
-        </div>
+<section id="projects" class="py-20 bg-secondary">
+  <div class="container mx-auto px-6">
+    <div class="text-center mb-16">
+      <h2 class="text-3xl font-bold mb-4">
+        My <span class="text-primary">Game & Simulation</span> Projects
+      </h2>
+      <div class="w-20 h-1 bg-primary mx-auto"></div>
+    </div>
 
-        <div class="max-w-2xl mx-auto bg-dark rounded-xl p-8 shadow-lg">
-          <form id="contact-form">
-            <!-- Honeypot field - hidden from humans, bots will fill it -->
-            <input type="text" name="website" id="website" style="position:absolute;left:-9999px;opacity:0;height:0;width:0;" tabindex="-1" autocomplete="off" />
-            
-            <!-- Step 1: Form Inputs -->
-            <div id="form-step-1">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-              <div>
-                <label for="name" class="block text-gray-400 mb-2">Name</label>
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  class="w-full px-4 py-3 bg-secondary border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
-                  placeholder="Your name"
-                  required
-                />
-              </div>
-              <div>
-                <label for="email" class="block text-gray-400 mb-2"
-                  >Email</label
-                >
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  class="w-full px-4 py-3 bg-secondary border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
-                  placeholder="your.email@example.com"
-                  required
-                />
-              </div>
-            </div>
-            <div class="mb-6">
-              <label for="subject" class="block mb-2 text-gray-400"
-                >Subject</label
-              >
-              <input
-                type="text"
-                id="subject"
-                name="subject"
-                class="w-full px-4 py-3 bg-secondary border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
-                placeholder="Subject"
-                required
-              />
-            </div>
-            <div class="mb-6">
-              <label for="message" class="block mb-2 text-gray-400"
-                >Message</label
-              >
-              <textarea
-                id="message"
-                name="message"
-                rows="4"
-                class="w-full px-4 py-3 bg-secondary border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
-                placeholder="Send me a message..."
-                required
-              ></textarea>
-            </div>
-            <div id="form-message" class="text-center mb-4"></div>
-            <button
-              type="submit"
-              class="w-full bg-primary text-dark font-semibold py-3 rounded-lg hover:bg-primary/90 transition focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-dark"
-            >
-              Send Message
+    <div class="grid grid-cols-1 md-grid-3 gap-8 items-start">
+      <div class="project-card bg-dark rounded-xl overflow-hidden shadow-lg transition duration-500" data-images='[
+              "images/mahakarya1.png",
+              "images/mahakarya2.png",
+              "images/mahakarya3.png"
+            ]'>
+        <div class="project-slider">
+          <div class="project-gallery" id="gallery-mahakarya">
+            <img loading="lazy" src="images/mahakarya1.png" alt="VR Mahakarya Screenshot 1" />
+            <img loading="lazy" src="images/mahakarya2.png" alt="VR Mahakarya Screenshot 2" />
+            <img loading="lazy" src="images/mahakarya3.png" alt="VR Mahakarya Screenshot 3" />
+          </div>
+          <div class="slider-nav">
+            <button class="prev-btn" data-gallery="gallery-mahakarya">
+              <i class="fas fa-chevron-left"></i>
             </button>
-            </div>
-
-            <!-- Step 2: OTP Verification (Hidden by default) -->
-            <div id="form-step-2" class="hidden">
-              <div class="text-center mb-6">
-                <i class="fas fa-envelope-open-text text-4xl text-primary mb-4"></i>
-                <h3 class="text-xl font-bold mb-2">Verify Your Email</h3>
-                <p class="text-gray-400 text-sm">We've sent a 6-digit code to <span id="verify-email-display" class="text-primary font-semibold"></span>.<br>Please enter it below to confirm your message.</p>
-              </div>
-              <div class="mb-6">
-                <input
-                  type="text"
-                  id="otp-code"
-                  name="otp"
-                  maxlength="6"
-                  class="w-full px-4 py-3 bg-secondary border border-gray-700 rounded-lg text-center text-2xl tracking-[0.5em] font-mono focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
-                  placeholder="------"
-                />
-              </div>
-              <div class="flex gap-4">
-                <button
-                  type="button"
-                  id="btn-back"
-                  class="w-1/3 bg-transparent border border-gray-600 text-gray-300 font-semibold py-3 rounded-lg hover:bg-secondary transition focus:outline-none"
-                >
-                  Back
-                </button>
-                <button
-                  type="button"
-                  id="btn-verify"
-                  class="w-2/3 bg-primary text-dark font-semibold py-3 rounded-lg hover:bg-primary/90 transition focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-dark"
-                >
-                  Verify & Send
-                </button>
-              </div>
-            </div>
-
-          </form>
-        </div>
-      </div>
-    </section>
-
-    <footer class="py-8 bg-dark">
-      <div class="container mx-auto px-6">
-        <div class="flex flex-col md:flex-row justify-between items-center">
-          <div class="flex items-center space-x-2 mb-4 md:mb-0">
-            <div class="w-6 h-6 bg-primary rounded-full"></div>
-            <span
-              class="text-lg font-bold bg-gradient-to-r from-primary to-emerald-400 bg-clip-text text-transparent"
-              >Cikal Chievo Portfolio</span
-            >
-          </div>
-          <div class="flex space-x-6">
-            <a
-              href="https://www.linkedin.com/in/cikal-chievo-arment-86956b1a2/"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="text-gray-300 hover:text-primary transition skill-icon"
-              aria-label="LinkedIn Profile"
-            >
-              <i class="fab fa-linkedin text-2xl"></i>
-            </a>
-            <a
-              href="https://github.com/cikalchievoart"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="text-gray-300 hover:text-primary transition skill-icon"
-              aria-label="GitHub Profile"
-            >
-              <i class="fab fa-github text-2xl"></i>
-            </a>
-            <a
-              href="https://www.instagram.com/cikalchievo.art/"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="text-gray-300 hover:text-primary transition skill-icon"
-              aria-label="Instagram Profile"
-            >
-              <i class="fab fa-instagram text-2xl"></i>
-            </a>
+            <button class="next-btn" data-gallery="gallery-mahakarya">
+              <i class="fas fa-chevron-right"></i>
+            </button>
           </div>
         </div>
-        <div class="mt-4 text-center text-gray-400 text-sm">
-          © 2025 Cikal Chievo Arment. All rights reserved.
+        <div class="p-6">
+          <h3 class="text-xl font-bold mb-2">Game VR Mahakarya</h3>
+          <div class="project-description">
+            <p class="text-gray-400 mb-4 short-description"></p>
+            <p class="text-gray-400 mb-4 full-description hidden">
+              Developed an immersive vocational exhibition VR game using
+              Unity and Oculus. I was responsible for implementing enemy AI
+              (for interactive storytelling), object interaction systems
+              (grabbing, triggering, inspecting), and building modular
+              environments. The game showcases iconic Indonesian landmarks
+              such as Borobudur, Ulun Danu, Mount Merapi, Prambanan, Monas,
+              Kota Tua, Jam Gadang, Toraja, and Honai, each embedded with
+              real vocational student works from SMK and polytechnic
+              institutions. This game was showcased at a national game event
+              and received widespread appreciation for its cultural depth
+              and interactive educational concept.
+            </p>
+            <button class="toggle-description text-primary text-sm font-semibold hover:underline focus:outline-none"
+              data-state="short">
+              See All →
+            </button>
+          </div>
+          <div class="flex flex-wrap gap-2 mb-4">
+            <span class="px-3 py-1 bg-secondary rounded-full text-xs text-primary">Unity</span>
+            <span class="px-3 py-1 bg-secondary rounded-full text-xs text-primary">Virtual Reality</span>
+          </div>
+          <button onclick="openModal('modal-mahakarya')"
+            class="text-primary text-sm font-semibold hover:underline focus:outline-none">
+            View Documentation →
+          </button>
         </div>
       </div>
-    </footer>
+      <div id="modal-mahakarya" class="modal">
+        <div class="modal-content">
+          <span class="modal-close" onclick="closeModal('modal-mahakarya')"><i class="fas fa-times"></i></span>
+          <iframe width="560" height="315" src="https://www.youtube.com/embed/jSHufoJGI6M?si=mGTpjsrRfMUCtcXQ"
+            title="YouTube video player" frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+      </div>
+
+      <div class="project-card bg-dark rounded-xl overflow-hidden shadow-lg transition duration-500" data-images='[
+              "images/riau1.png",
+              "images/riau2.png",
+              "images/riau3.png"
+            ]'>
+        <div class="project-slider">
+          <div class="project-gallery" id="gallery-battle-of-riau">
+            <img loading="lazy" src="images/riau1.png" alt="Battle of Riau Screenshot 1" />
+            <img loading="lazy" src="images/riau2.png" alt="Battle of Riau Screenshot 2" />
+            <img loading="lazy" src="images/riau3.png" alt="Battle of Riau Screenshot 3" />
+          </div>
+          <div class="slider-nav">
+            <button class="prev-btn" data-gallery="gallery-battle-of-riau">
+              <i class="fas fa-chevron-left"></i>
+            </button>
+            <button class="next-btn" data-gallery="gallery-battle-of-riau">
+              <i class="fas fa-chevron-right"></i>
+            </button>
+          </div>
+        </div>
+        <div class="p-6">
+          <h3 class="text-xl font-bold mb-2">Game VR Battle of Riau</h3>
+          <div class="project-description">
+            <p class="text-gray-400 mb-4 short-description"></p>
+            <p class="text-gray-400 mb-4 full-description hidden">
+              Contributed as an environment and gameplay systems developer
+              for a historical VR FPS game built using Unity and Oculus. The
+              game reenacts the 1784 war between the Riau-Lingga Kingdom and
+              Dutch forces. I designed immersive 3D environments
+              representing Malay coastal territories, programmed NPCs
+              onboard enemy ships, and implemented a dynamic difficulty
+              adjustment (DDA) system based on real-time player performance
+              (score-driven scaling). This game was showcased at a national
+              game exhibition and received appreciation for its historical
+              narrative and gameplay innovation.
+            </p>
+            <button class="toggle-description text-primary text-sm font-semibold hover:underline focus:outline-none"
+              data-state="short">
+              See All →
+            </button>
+          </div>
+          <div class="flex flex-wrap gap-2 mb-4">
+            <span class="px-3 py-1 bg-secondary rounded-full text-xs text-primary">Unity</span>
+            <span class="px-3 py-1 bg-secondary rounded-full text-xs text-primary">Virtual Reality</span>
+          </div>
+          <button onclick="openModal('modal-battle-of-riau')"
+            class="text-primary text-sm font-semibold hover:underline focus:outline-none">
+            View Documentation →
+          </button>
+        </div>
+      </div>
+      <div id="modal-battle-of-riau" class="modal">
+        <div class="modal-content">
+          <span class="modal-close" onclick="closeModal('modal-battle-of-riau')"><i class="fas fa-times"></i></span>
+          <iframe width="560" height="315" src="https://www.youtube.com/embed/ei0mxm1s3yg?si=6IBgRWKWWSsouQ7x"
+            title="YouTube video player" frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+      </div>
+
+      <div class="project-card bg-dark rounded-xl overflow-hidden shadow-lg transition duration-500" data-images='[
+              "images/little1.jpg",
+              "images/little2.jpg",
+              "images/little3.jpg"
+            ]'>
+        <div class="project-slider">
+          <div class="project-gallery" id="gallery-little-witch">
+            <img loading="lazy" src="images/little1.jpg" alt="Little Witch Screenshot 1" />
+            <img loading="lazy" src="images/little2.jpg" alt="Little Witch Screenshot 2" />
+            <img loading="lazy" src="images/little3.jpg" alt="Little Witch Screenshot 3" />
+          </div>
+          <div class="slider-nav">
+            <button class="prev-btn" data-gallery="gallery-little-witch">
+              <i class="fas fa-chevron-left"></i>
+            </button>
+            <button class="next-btn" data-gallery="gallery-little-witch">
+              <i class="fas fa-chevron-right"></i>
+            </button>
+          </div>
+        </div>
+        <div class="p-6">
+          <h3 class="text-xl font-bold mb-2">
+            Game Little Witch: The Wanderer
+          </h3>
+          <div class="project-description">
+            <p class="text-gray-400 mb-4 short-description"></p>
+            <p class="text-gray-400 mb-4 full-description hidden">
+              A side-scrolling adventure game inspired by Space Impact,
+              featuring 3D assets and a magical witch theme. The game
+              includes 15 levels with progressive difficulty and a character
+              selection system. I contributed as a game programmer,
+              developing key mechanics such as level-locking logic, enemy
+              movement and shooting behavior, and integrating a custom
+              Arduino-based joystick controller. The project showcases both
+              gameplay balance and hardware interaction.
+            </p>
+            <button class="toggle-description text-primary text-sm font-semibold hover:underline focus:outline-none"
+              data-state="short">
+              See All →
+            </button>
+          </div>
+          <div class="flex flex-wrap gap-2 mb-4">
+            <span class="px-3 py-1 bg-secondary rounded-full text-xs text-primary">Unity</span>
+            <span class="px-3 py-1 bg-secondary rounded-full text-xs text-primary">3D</span>
+            <span class="px-3 py-1 bg-secondary rounded-full text-xs text-primary">Arduino Controller</span>
+          </div>
+          <button onclick="openModal('modal-little-witch')"
+            class="text-primary text-sm font-semibold hover:underline focus:outline-none">
+            View Documentation →
+          </button>
+        </div>
+      </div>
+      <div id="modal-little-witch" class="modal">
+        <div class="modal-content">
+          <span class="modal-close" onclick="closeModal('modal-little-witch')"><i class="fas fa-times"></i></span>
+          <iframe width="560" height="315" src="https://www.youtube.com/embed/Bu-Tcuuw-yU?si=gvdlVxFzqDCSv3oL"
+            title="YouTube video player" frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+      </div>
+
+      <div class="project-card bg-dark rounded-xl overflow-hidden shadow-lg transition duration-500" data-images='[
+              "images/sumitomo1.png",
+              "images/sumitomo2.png",
+              "images/sumitomo3.jpg"
+            ]'>
+        <div class="project-slider">
+          <div class="project-gallery" id="gallery-bike-simulator">
+            <img loading="lazy" src="images/sumitomo1.png" alt="Bike Simulator Screenshot 1" />
+            <img loading="lazy" src="images/sumitomo2.png" alt="Bike Simulator Screenshot 2" />
+            <img loading="lazy" src="images/sumitomo3.jpg" alt="Bike Simulator Screenshot 3" />
+          </div>
+          <div class="slider-nav">
+            <button class="prev-btn" data-gallery="gallery-bike-simulator">
+              <i class="fas fa-chevron-left"></i>
+            </button>
+            <button class="next-btn" data-gallery="gallery-bike-simulator">
+              <i class="fas fa-chevron-right"></i>
+            </button>
+          </div>
+        </div>
+        <div class="p-6">
+          <h3 class="text-xl font-bold mb-2">Bike Simulator PT. XYZ</h3>
+          <div class="project-description">
+            <p class="text-gray-400 mb-4 short-description"></p>
+            <p class="text-gray-400 mb-4 full-description hidden">
+              A motorcycle driving simulator developed using Unity, designed
+              to provide a realistic riding experience from public roads to
+              the final destination at PT. XYZ. The simulation features
+              traffic systems, dynamic obstacles, and immersive road
+              environments that reflect real-life driving challenges. I
+              served as the game programmer, responsible for implementing
+              traffic NPC movement and logic, motorcycle engine sound
+              system, player scoring mechanics, and full hardware
+              integration using Arduino sensors attached to a real
+              motorcycle frame. The simulator was used for training and
+              received positive feedback for its realism and functionality.
+            </p>
+            <button class="toggle-description text-primary text-sm font-semibold hover:underline focus:outline-none"
+              data-state="short">
+              See All →
+            </button>
+          </div>
+          <div class="flex flex-wrap gap-2 mb-4">
+            <span class="px-3 py-1 bg-secondary rounded-full text-xs text-primary">Unity</span>
+            <span class="px-3 py-1 bg-secondary rounded-full text-xs text-primary">Simulation</span>
+            <span class="px-3 py-1 bg-secondary rounded-full text-xs text-primary">Arduino Controller</span>
+          </div>
+          <button onclick="openModal('modal-bike-simulator')"
+            class="text-primary text-sm font-semibold hover:underline focus:outline-none">
+            View Documentation →
+          </button>
+        </div>
+      </div>
+      <div id="modal-bike-simulator" class="modal">
+        <div class="modal-content">
+          <span class="modal-close" onclick="closeModal('modal-bike-simulator')"><i class="fas fa-times"></i></span>
+          <iframe src="https://drive.google.com/file/d/1wIdemcbPuNke-AauVveo_epg4kZE0ccP/preview"
+            title="Bike Simulator PT. XYZ Video" frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="gallery" class="py-20">
+  <div class="container mx-auto px-6">
+    <div class="text-center mb-16">
+      <h2 class="text-3xl font-bold mb-4">
+        Game Exhibition <span class="text-primary">Gallery</span>
+      </h2>
+      <div class="w-20 h-1 bg-primary mx-auto"></div>
+    </div>
+    <div class="grid grid-cols-1 gap-8 justify-items-center">
+      <div class="gallery-card bg-dark rounded-xl overflow-hidden shadow-lg transition duration-500" data-images='[
+              "images/background1.jpg",
+              "images/background2.jpg",
+              "images/background3.jpg"
+            ]'>
+        <div class="gallery-slider">
+          <div class="gallery-images" id="gallery-exhibition">
+            <img loading="lazy" src="images/background1.jpg" alt="Game Exhibition Photo 1" />
+            <img loading="lazy" src="images/background2.jpg" alt="Game Exhibition Photo 2" />
+            <img loading="lazy" src="images/background3.jpg" alt="Game Exhibition Photo 3" />
+          </div>
+          <div class="slider-nav">
+            <button class="prev-btn" data-gallery="gallery-exhibition">
+              <i class="fas fa-chevron-left"></i>
+            </button>
+            <button class="next-btn" data-gallery="gallery-exhibition">
+              <i class="fas fa-chevron-right"></i>
+            </button>
+          </div>
+        </div>
+        <div class="p-6">
+          <h3 class="text-xl font-bold mb-2">Game Exhibition Moments</h3>
+          <p class="text-gray-400 mb-4">
+            Captured moments from the INTI Gamecomm & Animation EXPO 2024 at
+            Jakarta International EXPO, North Jakarta, showcasing my VR and
+            simulation projects with DigiArs Game Development Team
+            (2024–2025), featuring interactive setups and visitor
+            engagement.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div id="image-modal" class="image-modal">
+  <div class="image-modal-content">
+    <span class="image-modal-close"><i class="fas fa-times"></i></span>
+    <img id="modal-image" src="" alt="Project Image" />
+    <div class="image-slider-nav">
+      <button id="image-prev-btn" class="prev-btn">
+        <i class="fas fa-chevron-left"></i>
+      </button>
+      <button id="image-next-btn" class="next-btn">
+        <i class="fas fa-chevron-right"></i>
+      </button>
+    </div>
+  </div>
+</div>
+
+<section id="skills" class="py-20">
+  <div class="container mx-auto px-6">
+    <div class="text-center mb-16">
+      <h2 class="text-3xl font-bold mb-4">
+        Technical <span class="text-primary">Skills</span>
+      </h2>
+      <div class="w-20 h-1 bg-primary mx-auto"></div>
+    </div>
+
+    <div class="grid grid-cols-2 md-grid-6 gap-8">
+      <div class="text-center p-6 bg-secondary rounded-xl">
+        <div class="skill-icon text-5xl mb-4 text-primary">
+          <i class="fab fa-unity"></i>
+        </div>
+        <h3 class="font-semibold mb-2">Unity</h3>
+        <p class="text-sm text-gray-400">2+ years</p>
+      </div>
+      <div class="text-center p-6 bg-secondary rounded-xl">
+        <div class="skill-icon text-5xl mb-4 text-primary">
+          <i class="fas fa-laptop-code"></i>
+        </div>
+        <h3 class="font-semibold mb-2">C#</h3>
+        <p class="text-sm text-gray-400">2+ years</p>
+      </div>
+      <div class="text-center p-6 bg-secondary rounded-xl">
+        <div class="skill-icon text-5xl mb-4 text-primary">
+          <i class="fas fa-cogs"></i>
+        </div>
+        <h3 class="font-semibold mb-2">Embedded Systems Integration</h3>
+        <p class="text-sm text-gray-400">1+ years</p>
+      </div>
+      <div class="text-center p-6 bg-secondary rounded-xl">
+        <div class="skill-icon text-5xl mb-4 text-primary">
+          <i class="fas fa-users"></i>
+        </div>
+        <h3 class="font-semibold mb-2">Teamwork</h3>
+        <p class="text-sm text-gray-400">Collaboration</p>
+      </div>
+      <div class="text-center p-6 bg-secondary rounded-xl">
+        <div class="skill-icon text-5xl mb-4 text-primary">
+          <i class="fas fa-lightbulb"></i>
+        </div>
+        <h3 class="font-semibold mb-2">Problem Solving</h3>
+        <p class="text-sm text-gray-400">Creative</p>
+      </div>
+      <div class="text-center p-6 bg-secondary rounded-xl">
+        <div class="skill-icon text-5xl mb-4 text-primary">
+          <i class="fas fa-clock"></i>
+        </div>
+        <h3 class="font-semibold mb-2">Time Management</h3>
+        <p class="text-sm text-gray-400">Effective</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="py-20 bg-secondary">
+  <div class="container mx-auto px-6">
+    <div class="text-center mb-16">
+      <h2 class="text-3xl font-bold mb-4">
+        Get In <span class="text-primary">Touch</span>
+      </h2>
+      <div class="w-20 h-1 bg-primary mx-auto"></div>
+    </div>
+
+    <div class="max-w-2xl mx-auto bg-dark rounded-xl p-8 shadow-lg">
+      <form id="contact-form">
+        <!-- Honeypot field - hidden from humans, bots will fill it -->
+        <input type="text" name="website" id="website"
+          style="position:absolute;left:-9999px;opacity:0;height:0;width:0;" tabindex="-1" autocomplete="off" />
+
+        <!-- Step 1: Form Inputs -->
+        <div id="form-step-1">
+          <div class="grid grid-cols-1 md-grid-2 gap-6 mb-6">
+            <div>
+              <label for="name" class="block text-gray-400 mb-2">Name</label>
+              <input type="text" id="name" name="name"
+                class="w-full px-4 py-3 bg-secondary border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                placeholder="Your name" required />
+            </div>
+            <div>
+              <label for="email" class="block text-gray-400 mb-2">Email</label>
+              <input type="email" id="email" name="email"
+                class="w-full px-4 py-3 bg-secondary border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                placeholder="your.email@example.com" required />
+            </div>
+          </div>
+          <div class="mb-6">
+            <label for="subject" class="block mb-2 text-gray-400">Subject</label>
+            <input type="text" id="subject" name="subject"
+              class="w-full px-4 py-3 bg-secondary border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+              placeholder="Subject" required />
+          </div>
+          <div class="mb-6">
+            <label for="message" class="block mb-2 text-gray-400">Message</label>
+            <textarea id="message" name="message" rows="4"
+              class="w-full px-4 py-3 bg-secondary border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+              placeholder="Send me a message..." required></textarea>
+          </div>
+          <div id="form-message" class="text-center mb-4"></div>
+          <button type="submit"
+            class="w-full bg-primary text-dark font-semibold py-3 rounded-lg hover:bg-primary/90 transition focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-dark">
+            Send Message
+          </button>
+        </div>
+
+        <!-- Step 2: OTP Verification (Hidden by default) -->
+        <div id="form-step-2" class="hidden">
+          <div class="text-center mb-6">
+            <i class="fas fa-envelope-open-text text-4xl text-primary mb-4"></i>
+            <h3 class="text-xl font-bold mb-2">Verify Your Email</h3>
+            <p class="text-gray-400 text-sm">We've sent a 6-digit code to <span id="verify-email-display"
+                class="text-primary font-semibold"></span>.<br>Please enter it below to confirm your message.</p>
+          </div>
+          <div class="mb-6">
+            <input type="text" id="otp-code" name="otp" maxlength="6"
+              class="w-full px-4 py-3 bg-secondary border border-gray-700 rounded-lg text-center text-2xl tracking-[0.5em] font-mono focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+              placeholder="------" />
+          </div>
+          <div class="flex gap-4">
+            <button type="button" id="btn-back"
+              class="w-1/3 bg-transparent border border-gray-600 text-gray-300 font-semibold py-3 rounded-lg hover:bg-secondary transition focus:outline-none">
+              Back
+            </button>
+            <button type="button" id="btn-verify"
+              class="w-2/3 bg-primary text-dark font-semibold py-3 rounded-lg hover:bg-primary/90 transition focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-dark">
+              Verify & Send
+            </button>
+          </div>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer class="py-8 bg-dark">
+  <div class="container mx-auto px-6">
+    <div class="flex md-flex-row justify-between items-center">
+      <div class="flex items-center space-x-2 mb-4 md-mb-0">
+        <div class="w-6 h-6 bg-primary rounded-full"></div>
+        <span class="text-lg font-bold bg-gradient-to-r from-primary to-emerald-400 bg-clip-text text-transparent">Cikal
+          Chievo Portfolio</span>
+      </div>
+      <div class="flex space-x-6">
+        <a href="https://www.linkedin.com/in/cikal-chievo-arment-86956b1a2/" target="_blank" rel="noopener noreferrer"
+          class="text-gray-300 hover:text-primary transition skill-icon" aria-label="LinkedIn Profile">
+          <i class="fab fa-linkedin text-2xl"></i>
+        </a>
+        <a href="https://github.com/cikalchievoart" target="_blank" rel="noopener noreferrer"
+          class="text-gray-300 hover:text-primary transition skill-icon" aria-label="GitHub Profile">
+          <i class="fab fa-github text-2xl"></i>
+        </a>
+        <a href="https://www.instagram.com/cikalchievo.art/" target="_blank" rel="noopener noreferrer"
+          class="text-gray-300 hover:text-primary transition skill-icon" aria-label="Instagram Profile">
+          <i class="fab fa-instagram text-2xl"></i>
+        </a>
+      </div>
+    </div>
+    <div class="mt-4 text-center text-gray-400 text-sm">
+      © 2026 Cikal Chievo Arment. All rights reserved.
+    </div>
+  </div>
+</footer>
