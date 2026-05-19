@@ -1,6 +1,6 @@
-import Script from "next/script";
 import fs from "fs";
 import path from "path";
+import ClientScript from "./client-script";
 
 export default function Home() {
   const htmlPath = path.join(process.cwd(), "app", "portfolio-body.html");
@@ -9,7 +9,7 @@ export default function Home() {
   return (
     <>
       <div dangerouslySetInnerHTML={{ __html: htmlContent }} />
-      <Script src="/script.js" strategy="afterInteractive" />
+      <ClientScript />
     </>
   );
 }
