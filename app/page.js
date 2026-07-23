@@ -1,15 +1,27 @@
-import fs from "fs";
-import path from "path";
-import ClientScript from "./client-script";
+"use client";
+
+import Header from "../components/Header";
+import Hero from "../components/Hero";
+import Projects from "../components/Projects";
+import Skills from "../components/Skills";
+import Experience from "../components/Experience";
+import Gallery from "../components/Gallery";
+import Contact from "../components/Contact";
+import Footer from "../components/Footer";
 
 export default function Home() {
-  const htmlPath = path.join(process.cwd(), "app", "portfolio-body.html");
-  const htmlContent = fs.readFileSync(htmlPath, "utf-8");
-
   return (
     <>
-      <div dangerouslySetInnerHTML={{ __html: htmlContent }} />
-      <ClientScript />
+      <Header />
+      <main>
+        <Hero />
+        <Projects />
+        <Skills />
+        <Experience />
+        <Gallery />
+        <Contact />
+      </main>
+      <Footer />
     </>
   );
 }

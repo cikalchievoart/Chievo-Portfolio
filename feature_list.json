@@ -1,0 +1,14 @@
+[
+  {
+    "id": "react-conversion",
+    "name": "Convert Portfolio to React Components",
+    "status": "completed",
+    "evidence": "Components created in components/ and page.js updated."
+  },
+  {
+    "id": "swiss-gaming-theme",
+    "name": "Refactor Frontend to Swiss Design & Gaming HUD Theme",
+    "status": "completed",
+    "evidence": "Refactored all components and verified clean npm run build."
+  }
+]
