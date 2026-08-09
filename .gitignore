@@ -27,9 +27,16 @@ npm-debug.log*
 .claude
 .claude/
 .claude/**
+.docs
+.docs/
+.docs/**
+/.docs
+/.docs/
+/.docs/**
 AGENTS.md
 CHANGELOG.md
 design.md
 DESIGN.md
 progress.md
 skill-locks.json
+
