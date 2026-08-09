@@ -2,27 +2,16 @@
 
 - [x] Create PRD (`PRD.md`) & Design Specification (`design.md`).
 - [x] Create implementation plan (`implementation_plan.md`).
-- [x] Clean Arcade Portfolio Layout:
-  - [x] Implemented dynamic rotating role/class switcher (`GAME PROGRAMMER` -> `IT PROGRAMMER` -> `IT ENTHUSIAST`) with a 1-second interval and chromatic glitch animation (`.glitch-active`, `@keyframes textGlitch`) in `components/Hero.jsx` and `app/globals.css`.
-  - [x] Removed markdown bold asterisks from the hero bio description in `components/Hero.jsx`.
-  - [x] Updated contact email to `cikalchievo01@gmail.com` and location to `Batam, Indonesia` in `components/Contact.jsx`.
-  - [x] Fixed mobile menu backdrop blur clipping issue:
-    - [x] Isolated `backdrop-blur-md` and `bg-[#090d16]/90` to a child wrapper `div` around the `<nav>`.
-    - [x] Made parent `<header>` wrapper `bg-transparent` with `overflow-visible`.
-    - [x] This prevents the browser from clipping the `position: fixed` mobile menu drawer below the header's bounds, allowing the solid drawer background to render 100% full height.
-  - [x] Made mobile menu background solid dark color (`background-color: #090d16 !important; opacity: 1 !important`) to prevent text overlapping and clashing on screen.
-  - [x] Added `overflow: visible !important` to header container class `.sticky-header-fixed` to ensure menu does not get clipped.
-  - [x] Resolved mobile responsive top bar issues:
-    - [x] Shortened brand title font size (`text-sm sm:text-base`) and added `whitespace-nowrap` to prevent wrapping.
-    - [x] Increased mobile drawer menu `z-index` to `100000 !important` in `app/globals.css` so it overlays on top of the fixed header.
-  - [x] Created custom `.sticky-header-fixed` class in `app/globals.css` with `position: fixed !important`, `z-index: 9999 !important` to override parent container context constraints.
-  - [x] Applied `.sticky-header-fixed` class to `<header>` inside `components/Header.jsx`.
-  - [x] Removed unused FPS telemetry badge from `components/Header.jsx`.
-  - [x] Removed `SpaceImpactGame.jsx` & import from `app/page.js`.
-  - [x] Cleared `.next` build cache to eliminate import trace compilation errors.
-  - [x] Responsive Dynamic Grid (`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 items-start`) in `components/Projects.jsx`.
-  - [x] Compact Category Filter Tabs (`ALL`, `VR & GAMES`, `SIM & IOT`, `WEB & APP`, `VIDEO & MEDIA`).
-  - [x] Tabbed Skill Console Pillars (`[01 GAME DEV]`, `[02 IT SYSTEMS]`, `[03 MULTIMEDIA]`) in `components/Skills.jsx`.
-  - [x] Player HP/MP Bars & Clipped Polygon Photo Frame in `components/Hero.jsx`.
-  - [x] Mission Dispatcher 2-Column Terminal in `components/Contact.jsx`.
-  - [x] Arcade Credit Counter `[CREDITS: ∞]` & Live Clock in `components/Footer.jsx`.
+- [x] Create & maintain continuous change logging (`CHANGELOG.md`).
+- [x] Refactor all components from JavaScript to strict TypeScript (`.tsx`, `.ts`).
+- [x] Precision Dark-Tech UI & Interactive Frontend Overhaul:
+  - [x] Clean typography upgrade: `Plus Jakarta Sans` & `JetBrains Mono` Google Fonts in `app/layout.tsx`.
+  - [x] Global design system tokens in `app/globals.css`: Double-Bezel card architecture, dynamic spotlight cursor gradients, spring physics, and OLED dark surfaces.
+  - [x] Floating Dynamic Island Nav in `components/Header.tsx` with live status dot, scrollspy indicator, and smooth mobile drawer.
+  - [x] Rebuilt `components/Hero.tsx`: Removed fake gamer HP/MP bars; added interactive multi-language code playground (`InteractiveUI.tsx`, `VRHandTracker.cs`, `SerialBridge.go`), 1-click copy, and cursor-reactive particle canvas.
+  - [x] Rebuilt `components/Projects.tsx`: Dynamic Bento Grid layout, spotlight border tracking on mousemove, shadcn-styled filter pills, and rich modal preview.
+  - [x] Rebuilt `components/Skills.tsx`: 3-Pillar engineering matrix (`XR & Game Dev`, `Frontend Engineering`, `IoT & Systems`) with verified competency chips.
+  - [x] Rebuilt `components/Experience.tsx`: Laser-circuit timeline rail with glowing active nodes and clean duration calculations.
+  - [x] Rebuilt `components/Gallery.tsx` & `components/ImageModal.tsx`: Double-bezel exhibition showcase, thumbnail filmstrip, and keyboard-navigable lightbox (`←`, `→`, `ESC`).
+  - [x] Rebuilt `components/Contact.tsx`: Double-bezel inquiry surface, 1-click email copy, real-time feedback, and secure 2-step OTP email dispatch.
+  - [x] Rebuilt `components/Footer.tsx`: Minimalist footer with live `Asia/Jakarta (UTC+7)` timezone clock and back-to-top trigger.

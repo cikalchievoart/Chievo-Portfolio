@@ -7,8 +7,30 @@
 
 # env files
 .env*.local
+.env.local
 
 # misc
 .DS_Store
 *.pem
 npm-debug.log*
+
+# AI & Agent artifacts & entire folder contents
+.agents
+.agents/
+.agents/**
+/.agents
+/.agents/
+/.agents/**
+.agent
+.agent/
+.agent/**
+.claude
+.claude/
+.claude/**
+AGENTS.md
+CHANGELOG.md
+design.md
+DESIGN.md
+prd.md
+progress.md
+skill-locks.json

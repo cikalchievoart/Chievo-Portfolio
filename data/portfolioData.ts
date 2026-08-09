@@ -1,4 +1,6 @@
-export const projectsData = [
+import { Project, GalleryItem, Skill, ExperienceItem } from "../types/portfolio";
+
+export const projectsData: Project[] = [
   {
     id: "mahakarya",
     title: "Game VR Mahakarya",
@@ -147,7 +149,7 @@ export const projectsData = [
   }
 ];
 
-export const galleryData = [
+export const galleryData: GalleryItem[] = [
   {
     id: "exhibition",
     title: "INTI Gamecomm & Animation EXPO 2024",
@@ -160,7 +162,7 @@ export const galleryData = [
   }
 ];
 
-export const skillsData = [
+export const skillsData: Skill[] = [
   { name: "Unity", desc: "2+ years", icon: "fab fa-unity" },
   { name: "C#", desc: "2+ years", icon: "fas fa-laptop-code" },
   { name: "Embedded Systems Integration", desc: "1+ years", icon: "fas fa-cogs" },
@@ -185,7 +187,7 @@ export const skillsData = [
   { name: "Attention to Detail", desc: "Checking & Refining", icon: "fas fa-search-plus" }
 ];
 
-export const experienceData = [
+export const experienceData: ExperienceItem[] = [
   {
     company: "PT SMOE Indonesia",
     role: "IT Programmer",
@@ -195,10 +197,10 @@ export const experienceData = [
     location: "Batam, Riau Islands, Indonesia",
     details: [
       "Responsible for building and developing web applications using Microservices architecture, employing gRPC for fast service communication and Apache Kafka for event-driven message queuing.",
-      "Integrated Meilisearch for high-performance full-text search indexing and managed schema optimization with PostgreSQL database storage.",
+      "Created the mobile application using Flutter and backend Spring Boot.",
       "Designed and documented robust API endpoints using Swagger UI, while conducting web testing and Quality Assurance (QA) to guarantee overall system reliability."
     ],
-    skills: ["Microservices", "Apache Kafka", "gRPC", "Meilisearch", "PostgreSQL", "Swagger UI", "Web Testing", "Quality Assurance (QA)", "Back-End Web Development", "Git"]
+    skills: ["Flutter", "Spring Boot", "Microservices", "Apache Kafka", "gRPC", "PostgreSQL", "Swagger UI", "Web Testing", "Quality Assurance (QA)", "Back-End Web Development", "Git"]
   },
   {
     company: "Balai Laboratorium Kesehatan Masyarakat Batam",

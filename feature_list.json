@@ -10,5 +10,11 @@
     "name": "Refactor Frontend to Swiss Design & Gaming HUD Theme",
     "status": "completed",
     "evidence": "Refactored all components and verified clean npm run build."
+  },
+  {
+    "id": "typescript-refactor",
+    "name": "Refactor to TypeScript React (.tsx / .ts)",
+    "status": "completed",
+    "evidence": "All components, routes, and data converted to TypeScript with zero build errors."
   }
 ]
