@@ -1,20 +1,92 @@
-[
-  {
-    "id": "react-conversion",
-    "name": "Convert Portfolio to React Components",
-    "status": "completed",
-    "evidence": "Components created in components/ and page.js updated."
-  },
-  {
-    "id": "swiss-gaming-theme",
-    "name": "Refactor Frontend to Swiss Design & Gaming HUD Theme",
-    "status": "completed",
-    "evidence": "Refactored all components and verified clean npm run build."
-  },
-  {
-    "id": "typescript-refactor",
-    "name": "Refactor to TypeScript React (.tsx / .ts)",
-    "status": "completed",
-    "evidence": "All components, routes, and data converted to TypeScript with zero build errors."
-  }
-]
+{
+  "features": [
+    {
+      "id": "feat-001",
+      "name": "Project Setup & Next.js Foundation",
+      "description": "Initialize Next.js 15 App Router portfolio project with TypeScript and Tailwind CSS.",
+      "dependencies": [],
+      "status": "completed",
+      "evidence": "Package scripts and App Router directory structure created in app/."
+    },
+    {
+      "id": "feat-002",
+      "name": "TypeScript Component Refactor",
+      "description": "Convert all components, routes, and data models to strict TypeScript (.tsx/.ts).",
+      "dependencies": ["feat-001"],
+      "status": "completed",
+      "evidence": "Zero legacy .js/.jsx files; verified with clean npm run build."
+    },
+    {
+      "id": "feat-003",
+      "name": "Precision Dark-Tech Design System & UI Overhaul",
+      "description": "Implement OLED dark surfaces, Plus Jakarta Sans typography, double-bezel cards, and interactive canvas.",
+      "dependencies": ["feat-002"],
+      "status": "completed",
+      "evidence": "Global styles in app/globals.css and interactive components built."
+    },
+    {
+      "id": "feat-004",
+      "name": "Responsive Skills Matrix & Kinetic Pagination",
+      "description": "Add dynamic card view limits (9 desktop / 5 mobile) with staggered reveal animation and category filter tabs.",
+      "dependencies": ["feat-003"],
+      "status": "completed",
+      "evidence": "Components/Skills.tsx pagination and spring animations verified in browser."
+    },
+    {
+      "id": "feat-005",
+      "name": "Harness Engineering Integration",
+      "description": "Install and configure autonomous agent engineering harness with verification and session continuity.",
+      "dependencies": ["feat-004"],
+      "status": "completed",
+      "evidence": "Installed harness-creator skill, validated via validate-harness.mjs."
+    },
+    {
+      "id": "feat-006",
+      "name": "Selected Projects Collapse & Kinetic Motion Reveal",
+      "description": "Implement 4-item default view limit for projects with interactive Show All / Show Less button and staggered cubic-bezier motion.",
+      "dependencies": ["feat-005"],
+      "status": "completed",
+      "evidence": "Components/Projects.tsx pagination and animate-project-reveal in app/globals.css."
+    },
+    {
+      "id": "feat-007",
+      "name": "Swagger UI Interactive API Documentation",
+      "description": "Integrate next-swagger-doc and swagger-ui-react with JWT Bearer security scheme at /api-doc.",
+      "dependencies": ["feat-006"],
+      "status": "planned",
+      "evidence": ""
+    },
+    {
+      "id": "feat-008",
+      "name": "PostgreSQL Database Layer & Drizzle ORM",
+      "description": "Define database schemas for portfolio entities, setup connection client, and auto-seeder from portfolioData.ts.",
+      "dependencies": ["feat-007"],
+      "status": "planned",
+      "evidence": ""
+    },
+    {
+      "id": "feat-009",
+      "name": "JWT Bearer Authentication & Protected API Endpoints",
+      "description": "Implement JWT issue and verify utilities, auth middleware, and protected CRUD endpoints.",
+      "dependencies": ["feat-008"],
+      "status": "planned",
+      "evidence": ""
+    },
+    {
+      "id": "feat-010",
+      "name": "Admin CMS Dashboard & Cloud Media Uploader",
+      "description": "Build /admin CMS dashboard using shadcn/ui components with media upload pipeline.",
+      "dependencies": ["feat-009"],
+      "status": "planned",
+      "evidence": ""
+    },
+    {
+      "id": "feat-011",
+      "name": "Dynamic Frontend Data Migration & ISR Caching",
+      "description": "Migrate landing page to dynamic database queries with revalidateTag ISR invalidation on CMS updates.",
+      "dependencies": ["feat-010"],
+      "status": "planned",
+      "evidence": ""
+    }
+  ]
+}

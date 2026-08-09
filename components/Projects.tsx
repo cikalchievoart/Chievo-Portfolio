@@ -20,6 +20,7 @@ interface ImageModalState {
 
 export default function Projects() {
   const [activeCategory, setActiveCategory] = useState<string>("ALL");
+  const [showAll, setShowAll] = useState<boolean>(false);
   const [sliderIndices, setSliderIndices] = useState<Record<string, number>>({});
   const [activeModalId, setActiveModalId] = useState<string | null>(null);
 
@@ -81,6 +82,27 @@ export default function Projects() {
       return project.tags.includes("Video") || project.tags.includes("Short Video");
     return true;
   });
+
+  const limit = 4;
+  const hasMore = filteredProjects.length > limit;
+  const displayedProjects = showAll || !hasMore ? filteredProjects : filteredProjects.slice(0, limit);
+
+  const handleCategoryChange = (id: string) => {
+    setActiveCategory(id);
+    setShowAll(false);
+  };
+
+  const toggleShowAll = () => {
+    if (showAll) {
+      const projectsSection = document.getElementById("projects");
+      if (projectsSection) {
+        const yOffset = -80;
+        const y = projectsSection.getBoundingClientRect().top + window.pageYOffset + yOffset;
+        window.scrollTo({ top: y, behavior: "smooth" });
+      }
+    }
+    setShowAll((prev) => !prev);
+  };
 
   const getSliderIndex = (id: string): number => sliderIndices[id] || 0;
 
@@ -187,7 +209,7 @@ export default function Projects() {
             return (
               <button
                 key={cat.id}
-                onClick={() => setActiveCategory(cat.id)}
+                onClick={() => handleCategoryChange(cat.id)}
                 className={`px-4 py-2 rounded-full text-xs font-medium transition-all duration-300 flex items-center gap-2 ${
                   isActive
                     ? "bg-slate-900 text-white dark:bg-white dark:text-[#07090e] shadow-md font-semibold"
@@ -209,21 +231,25 @@ export default function Projects() {
           })}
         </div>
 
-        {/* Bento Grid Layout */}
+        {/* Bento Grid Layout with Motion Reveal */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-6">
-          {filteredProjects.map((project, idx) => {
+          {displayedProjects.map((project, idx) => {
             const currentIndex = getSliderIndex(project.id);
             // Asymmetric bento span calculation
-            const isFeatured = idx === 0 || idx === 3;
+            const isFeatured = idx % 4 === 0 || idx % 4 === 3;
             const colSpan = isFeatured
               ? "lg:col-span-8 md:col-span-2"
               : "lg:col-span-4 md:col-span-1";
 
+            const isRevealed = idx >= limit;
+            const animDelay = isRevealed ? (idx - limit) * 60 : Math.min(idx * 40, 200);
+
             return (
               <div
-                key={project.id}
+                key={`${activeCategory}-${project.id}`}
                 onMouseMove={handleCardMouseMove}
-                className={`${colSpan} group relative rounded-2xl p-[1px] bg-gradient-to-b from-slate-200 via-slate-100 to-transparent dark:from-white/10 dark:via-white/5 dark:to-transparent hover:from-cyan-500/40 hover:to-indigo-500/20 transition-all duration-500 shadow-md dark:shadow-xl spotlight-card border border-slate-200/80 dark:border-transparent`}
+                style={{ animationDelay: `${animDelay}ms` }}
+                className={`${colSpan} animate-project-reveal group relative rounded-2xl p-[1px] bg-gradient-to-b from-slate-200 via-slate-100 to-transparent dark:from-white/10 dark:via-white/5 dark:to-transparent hover:from-cyan-500/40 hover:to-indigo-500/20 transition-all duration-500 shadow-md dark:shadow-xl spotlight-card border border-slate-200/80 dark:border-transparent`}
               >
                 <div className="rounded-[calc(1rem-1px)] bg-white dark:bg-[#0c1017] p-5 h-full flex flex-col justify-between overflow-hidden">
                   
@@ -340,6 +366,28 @@ export default function Projects() {
             );
           })}
         </div>
+
+        {/* Show All / Show Less Motion Toggle Button */}
+        {hasMore && (
+          <div className="mt-12 flex justify-center">
+            <button
+              onClick={toggleShowAll}
+              className="group relative inline-flex items-center gap-3 px-7 py-3.5 rounded-full text-xs font-mono tracking-wider uppercase text-slate-800 dark:text-white bg-slate-100 dark:bg-white/[0.05] hover:bg-slate-200 dark:hover:bg-white/[0.1] border border-slate-300 dark:border-white/10 hover:border-cyan-500/50 dark:hover:border-cyan-400/50 shadow-sm hover:shadow-lg hover:shadow-cyan-500/10 transition-all duration-300 active:scale-95 cursor-pointer"
+            >
+              <span>
+                {showAll ? "Show Less Projects" : `Show All Projects (${filteredProjects.length})`}
+              </span>
+              <div className="w-5 h-5 rounded-full bg-slate-200 dark:bg-white/10 flex items-center justify-center transition-all duration-300 group-hover:bg-cyan-500/20 group-hover:scale-110">
+                <i
+                  className={`fa-solid fa-chevron-down text-[10px] text-cyan-600 dark:text-cyan-400 transition-transform duration-300 ${
+                    showAll ? "rotate-180" : "rotate-0"
+                  }`}
+                />
+              </div>
+            </button>
+          </div>
+        )}
+
       </div>
 
       {/* Video / Documentation Detail Modal */}

@@ -86,7 +86,7 @@ export default function InteractiveTitle({ className = "" }: InteractiveTitlePro
     <div className={`relative inline-block select-none ${className}`}>
       <h1
         aria-label="Cikal Chievo Arment"
-        className="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.1] text-slate-900 dark:text-white cursor-pointer group"
+        className="text-[2.25rem] min-[380px]:text-[2.65rem] sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight leading-[1.08] text-slate-900 dark:text-white cursor-pointer group"
         onClick={scramble}
         onMouseEnter={scramble}
       >
@@ -94,7 +94,7 @@ export default function InteractiveTitle({ className = "" }: InteractiveTitlePro
         <div className="flex flex-wrap items-center">
           {line1Display.split("").map((char, i) => {
             if (char === " ") {
-              return <span key={i} className="w-2.5 sm:w-3.5">&nbsp;</span>;
+              return <span key={i} className="w-2 sm:w-3.5">&nbsp;</span>;
             }
             const isHovered = hoveredLetter?.line === 1 && hoveredLetter?.index === i;
             return (
@@ -118,11 +118,11 @@ export default function InteractiveTitle({ className = "" }: InteractiveTitlePro
         </div>
 
         {/* Line 2: Arment (with animated cyber gradient) */}
-        <div className="flex flex-wrap items-center mt-1">
+        <div className="flex flex-wrap items-center mt-1 sm:mt-1.5">
           <span className="inline-flex bg-gradient-to-r from-cyan-600 via-teal-500 to-indigo-600 dark:from-cyan-400 dark:via-teal-300 dark:to-indigo-400 bg-clip-text text-transparent bg-[length:200%_auto] animate-gradient-x">
             {line2Display.split("").map((char, i) => {
               if (char === " ") {
-                return <span key={i} className="w-2.5 sm:w-3.5">&nbsp;</span>;
+                return <span key={i} className="w-2 sm:w-3.5">&nbsp;</span>;
               }
               const isHovered = hoveredLetter?.line === 2 && hoveredLetter?.index === i;
               return (
@@ -147,7 +147,7 @@ export default function InteractiveTitle({ className = "" }: InteractiveTitlePro
 
           {/* Interactive spark / re-scramble status pill */}
           <span
-            className={`ml-3 inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full text-[10px] font-mono tracking-wider transition-all duration-300 ${
+            className={`ml-2.5 sm:ml-3 inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full text-[10px] font-mono tracking-wider transition-all duration-300 ${
               isScrambling
                 ? "bg-cyan-500/20 text-cyan-600 dark:text-cyan-300 border border-cyan-500/40 animate-pulse"
                 : "bg-slate-200/60 dark:bg-white/5 text-slate-500 dark:text-slate-400 border border-slate-300/60 dark:border-white/10 opacity-0 group-hover:opacity-100"

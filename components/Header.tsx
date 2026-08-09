@@ -94,7 +94,7 @@ export default function Header() {
               />
             </div>
             <div className="flex flex-col">
-              <span className="font-semibold text-xs sm:text-sm text-slate-900 dark:text-slate-100 tracking-tight group-hover:text-cyan-600 dark:group-hover:text-white transition-colors">
+              <span className="font-bold text-[13px] sm:text-sm text-slate-900 dark:text-slate-100 tracking-tight group-hover:text-cyan-600 dark:group-hover:text-white transition-colors">
                 Cikal Chievo Arment
               </span>
               <div className="flex items-center gap-1.5">

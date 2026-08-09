@@ -233,3 +233,35 @@ body {
   -webkit-backdrop-filter: blur(16px);
 }
 
+/* Skill & Project card expansion motion */
+@keyframes skillReveal {
+  0% {
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.animate-skill-reveal {
+  animation: skillReveal 0.45s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes projectReveal {
+  0% {
+    opacity: 0;
+    transform: translateY(24px) scale(0.97);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.animate-project-reveal {
+  animation: projectReveal 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+
