@@ -93,19 +93,18 @@ export default function Header() {
                 className="w-full h-full object-cover grayscale contrast-110 group-hover:grayscale-0 transition-all duration-300"
               />
             </div>
-            <div className="flex flex-col">
-              <span className="font-bold text-[13px] sm:text-sm text-slate-900 dark:text-slate-100 tracking-tight group-hover:text-cyan-600 dark:group-hover:text-white transition-colors">
+            <div className="flex flex-col min-w-0">
+              <span className="font-bold text-[13px] sm:text-sm text-slate-900 dark:text-slate-100 tracking-tight group-hover:text-cyan-600 dark:group-hover:text-white transition-colors truncate">
                 Cikal Chievo Arment
               </span>
-              <div className="flex items-center gap-1.5">
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 dark:bg-emerald-400 animate-pulse"></span>
-                <span className="text-[10px] text-slate-500 dark:text-slate-400 font-mono">Batam, ID</span>
-              </div>
+              <span className="text-[10px] text-slate-500 dark:text-slate-400 font-mono truncate">
+                IT &amp; Multimedia Enthusiast
+              </span>
             </div>
           </a>
 
           {/* Desktop Nav Items */}
-          <nav className="hidden md:flex items-center gap-1 bg-slate-100/80 dark:bg-black/20 p-1 rounded-full border border-slate-200/60 dark:border-white/5">
+          <nav className="hidden lg:flex items-center gap-1 bg-slate-100/80 dark:bg-black/20 p-1 rounded-full border border-slate-200/60 dark:border-white/5">
             {navItems.map((item) => {
               const isActive = activeSection === item.id;
               return (
@@ -138,10 +137,10 @@ export default function Header() {
               <span className="text-[10px] font-mono">↗</span>
             </a>
 
-            {/* Mobile Hamburger Button */}
+            {/* Mobile / Tablet Hamburger Button */}
             <button
               onClick={toggleMobileMenu}
-              className="md:hidden w-9 h-9 rounded-full bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 flex items-center justify-center text-slate-700 dark:text-slate-200 hover:text-slate-900 dark:hover:text-white hover:bg-slate-200 dark:hover:bg-white/10 transition-colors focus:outline-none"
+              className="lg:hidden w-9 h-9 rounded-full bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 flex items-center justify-center text-slate-700 dark:text-slate-200 hover:text-slate-900 dark:hover:text-white hover:bg-slate-200 dark:hover:bg-white/10 transition-colors focus:outline-none"
               aria-label="Toggle navigation menu"
             >
               <i className={`fas ${isMobileOpen ? "fa-times" : "fa-bars"} text-sm`}></i>
@@ -150,9 +149,9 @@ export default function Header() {
         </div>
       </div>
 
-      {/* Mobile Drawer Overlay */}
+      {/* Mobile / Tablet Drawer Overlay */}
       {isMobileOpen && (
-        <div className="pointer-events-auto fixed inset-0 z-50 md:hidden">
+        <div className="pointer-events-auto fixed inset-0 z-50 lg:hidden">
           {/* Backdrop */}
           <div
             onClick={toggleMobileMenu}
